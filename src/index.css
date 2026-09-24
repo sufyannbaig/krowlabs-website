@@ -1,0 +1,37 @@
+@font-face {
+  font-family: "BDO Grotesk";
+  src: url("/fonts/BDOGrotesk-VF.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Editorial New";
+  src: url("/fonts/PPEditorialNew-Italic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    @apply bg-page font-sans leading-[1.4] text-ink antialiased;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  /* Accent word set in PP Editorial New Italic, e.g. "salesperson." */
+  .accent {
+    @apply font-serif font-normal italic leading-none text-brand;
+  }
+}
