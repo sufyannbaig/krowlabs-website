@@ -35,7 +35,7 @@ export default function BrandIdentity() {
         image={
           <>
             {/* soft orange glow bleeding off the right edge */}
-            <div aria-hidden className="pointer-events-none absolute left-[1377px] top-[212px] size-[158px]">
+            <div aria-hidden className="pointer-events-none absolute left-[1377px] top-[212px] size-[158px] max-lg:hidden">
               <img src={img("917b4.svg")} alt="" className="absolute inset-[-196.2%] size-[492.4%] max-w-none" />
             </div>
             <HeroImage src="/work/korax/cover.webp" className="left-[928px]" />
@@ -44,7 +44,7 @@ export default function BrandIdentity() {
       />
 
       {/* 51px gap where other service pages show the trust bar */}
-      <div className="relative z-10 mt-[51px] h-[196px]">
+      <div className="relative z-10 mt-[51px] h-[196px] max-lg:mt-4">
         <img src={img("73b39.svg")} alt="" aria-hidden className="absolute inset-x-0 top-[82px] h-[159px] w-full" />
         <CrossRibbons offset={10} />
       </div>
@@ -65,7 +65,7 @@ export default function BrandIdentity() {
         ]}
       />
 
-      <Container className="mt-20">
+      <Container className="mt-20 max-lg:mt-16">
         <ResultsBlock
           className="text-black"
           rowClassName="items-start justify-center px-0"
@@ -78,9 +78,8 @@ export default function BrandIdentity() {
         />
       </Container>
 
-      <section className="mt-40 bg-ink px-[133px] py-20">
-        <TestimonialsBlock
-          className="text-white"
+      <TestimonialsBlock
+          className="mt-40 bg-ink text-white"
           heading={
             <>
               What <span className="text-white/60">clients</span> say
@@ -88,10 +87,10 @@ export default function BrandIdentity() {
           }
           items={[testimonials.gkTraining, testimonials.contraDeveloper]}
         />
-      </section>
 
       <EngagementBlock
-        className="h-[649px] bg-white pt-[47px]"
+        className=""
+        bg="bg-white"
         theme="light"
         button="outline-muted"
         stepsClassName="items-end justify-center"
@@ -108,7 +107,7 @@ export default function BrandIdentity() {
         ]}
       />
 
-      <Container className="mt-40">
+      <Container className="mt-40 max-lg:mt-24">
         <FaqSection
           heading={
             <h2 className={cn(headingXL, "whitespace-nowrap text-ink")}>
@@ -128,14 +127,14 @@ export default function BrandIdentity() {
       </Container>
 
       <CtaBanner
-        className="mt-40"
+        className="mt-40 max-lg:mt-24"
         title="Ready for a brand that matches where you're headed?"
         buttonVariant="black"
         contentWidth={859}
         titleWidth={859}
       />
 
-      <Footer className="mt-40" />
+      <Footer className="mt-40 max-lg:mt-24" />
     </main>
   );
 }

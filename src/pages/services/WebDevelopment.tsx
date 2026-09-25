@@ -32,7 +32,7 @@ export default function WebDevelopment() {
         image={<HeroImage src="/work/b2b-saas-website/cover.webp" className="left-[928px]" />}
       />
 
-      <div className="h-[51px]" />
+      <div className="h-[51px] max-lg:hidden" />
 
       <IncludedColumns
         className="bg-ink text-white"
@@ -50,7 +50,7 @@ export default function WebDevelopment() {
         ]}
       />
 
-      <Container className="mt-20">
+      <Container className="mt-20 max-lg:mt-16">
         <ResultsBlock
           className="text-black"
           heading={
@@ -62,9 +62,8 @@ export default function WebDevelopment() {
         />
       </Container>
 
-      <section className="mt-20 bg-ink px-[133px] py-20">
-        <TestimonialsBlock
-          className="text-white"
+      <TestimonialsBlock
+          className="mt-20 bg-ink text-white"
           heading={
             <>
               What clients<span className="text-white/60"> say</span>
@@ -72,9 +71,8 @@ export default function WebDevelopment() {
           }
           items={[testimonials.contraDeveloper, testimonials.gkTraining]}
         />
-      </section>
 
-      <Container className="mt-[161px]">
+      <Container className="mt-[161px] max-lg:mt-24">
         <FaqSection
           heading={
             <h2 className={cn(headingXL, "w-[528px] text-ink")}>
@@ -85,9 +83,9 @@ export default function WebDevelopment() {
         />
       </Container>
 
-      <CtaBanner className="mt-40" title="Ready to get a working site in days?" />
+      <CtaBanner className="mt-40 max-lg:mt-24" title="Ready to get a working site in days?" />
 
-      <Footer className="mt-40" />
+      <Footer className="mt-40 max-lg:mt-24" />
     </main>
   );
 }

@@ -1,13 +1,15 @@
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
-import CaseStudy from "@/pages/CaseStudy";
+import { DesktopScale } from "@/components/layout/DesktopScale";
 import Index from "@/pages/Index";
-import BrandIdentity from "@/pages/services/BrandIdentity";
-import Cro from "@/pages/services/Cro";
-import DigitalAdvertising from "@/pages/services/DigitalAdvertising";
-import UiUxDesign from "@/pages/services/UiUxDesign";
-import WebDevelopment from "@/pages/services/WebDevelopment";
-import Work from "@/pages/Work";
+
+const CaseStudy = lazy(() => import("@/pages/CaseStudy"));
+const BrandIdentity = lazy(() => import("@/pages/services/BrandIdentity"));
+const Cro = lazy(() => import("@/pages/services/Cro"));
+const DigitalAdvertising = lazy(() => import("@/pages/services/DigitalAdvertising"));
+const UiUxDesign = lazy(() => import("@/pages/services/UiUxDesign"));
+const WebDevelopment = lazy(() => import("@/pages/services/WebDevelopment"));
+const Work = lazy(() => import("@/pages/Work"));
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -25,7 +27,9 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <Routes>
+      <DesktopScale>
+        <Suspense fallback={<div className="min-h-screen bg-page" />}>
+        <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/work" element={<Work />} />
         <Route path="/work/:slug" element={<CaseStudy />} />
@@ -35,7 +39,9 @@ export default function App() {
         <Route path="/services/brand-identity" element={<BrandIdentity />} />
         <Route path="/services/digital-advertising" element={<DigitalAdvertising />} />
         <Route path="*" element={<Index />} />
-      </Routes>
+        </Routes>
+        </Suspense>
+      </DesktopScale>
     </BrowserRouter>
   );
 }

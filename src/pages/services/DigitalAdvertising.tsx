@@ -33,7 +33,7 @@ export default function DigitalAdvertising() {
         image={<HeroImage src="/work/kryve/cover.webp" className="left-[928px]" />}
       />
 
-      <div className="h-[51px]" />
+      <div className="h-[51px] max-lg:hidden" />
 
       <IncludedColumns
         className="bg-[linear-gradient(120.98deg,rgb(210,58,18)_5.79%,rgb(245,133,45)_66.43%)] text-white"
@@ -51,7 +51,7 @@ export default function DigitalAdvertising() {
         ]}
       />
 
-      <section className="bg-ink py-20">
+      <section className="bg-ink py-20 max-lg:px-5 max-lg:py-16">
         <ResultsBlock
           className="mx-auto max-w-[1440px] text-white"
           heading={
@@ -64,7 +64,7 @@ export default function DigitalAdvertising() {
       </section>
 
       <TestimonialsBlock
-        className="mt-40 text-ink"
+        className="mt-20 text-ink max-lg:mt-8"
         heading={
           <>
             What <span className="accent">clients</span> say
@@ -74,7 +74,8 @@ export default function DigitalAdvertising() {
       />
 
       <EngagementBlock
-        className="mt-40 h-[715px] bg-ink pt-20"
+        className="mt-40"
+        bg="bg-ink"
         theme="dark"
         button="outline-white"
         heading="How this engagement runs"
@@ -86,7 +87,7 @@ export default function DigitalAdvertising() {
         ]}
       />
 
-      <Container className="mt-40">
+      <Container className="mt-40 max-lg:mt-24">
         <FaqSection
           heading={
             <h2 className={cn(headingXL, "w-[513px] text-ink")}>
@@ -105,9 +106,9 @@ export default function DigitalAdvertising() {
         />
       </Container>
 
-      <CtaBanner className="mt-40" title="Ready for ad creative that actually converts?" />
+      <CtaBanner className="mt-40 max-lg:mt-24" title="Ready for ad creative that actually converts?" />
 
-      <Footer className="mt-40" />
+      <Footer className="mt-40 max-lg:mt-24" />
     </main>
   );
 }

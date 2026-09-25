@@ -29,18 +29,18 @@ export function WorkCard({
           className={cn("w-full transition-transform duration-700 ease-out group-hover:scale-[1.03]", imageClassName)}
         />
       </div>
-      <div className="flex items-start justify-between gap-6 font-medium">
-        <div className="flex w-[300px] shrink-0 flex-col gap-[11px] leading-[1.4]">
-          <h3 className={cn("text-[26px]", dark ? "text-white" : "text-ink")}>{study.client}</h3>
+      <div className="flex items-start justify-between gap-6 font-medium max-lg:flex-col max-lg:gap-3">
+        <div className="flex w-[300px] shrink-0 flex-col gap-[11px] leading-[1.4] max-lg:w-auto">
+          <h3 className={cn("text-[26px] max-lg:text-[22px]", dark ? "text-white" : "text-ink")}>{study.client}</h3>
           <p className={cn("text-[16px] font-normal", dark ? "text-white/60" : "text-ink/60")}>{study.summary}</p>
         </div>
         <p
           className={cn(
-            "flex flex-col items-end gap-1 text-right leading-[1.4] tracking-[-0.8px]",
+            "flex flex-col items-end gap-1 text-right leading-[1.4] tracking-[-0.8px] max-lg:items-start max-lg:text-left",
             dark ? "text-white/60" : "text-ink/60",
           )}
         >
-          <span className="text-[36px] leading-[1.1] text-brand-stat">{stat.value}</span>
+          <span className="text-[36px] leading-[1.1] text-brand-stat max-lg:text-[26px]">{stat.value}</span>
           <span className="max-w-[220px] text-[16px] tracking-normal">{stat.label}</span>
         </p>
       </div>

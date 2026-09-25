@@ -19,16 +19,16 @@ export function TestimonialCard({ quote, name, role, avatar, initials, dark = fa
   return (
     <figure
       className={cn(
-        "flex shrink-0 items-start pb-[44px] pl-[34px] pr-[41px] pt-[45px]",
+        "flex shrink-0 items-start pb-[44px] pl-[34px] pr-[41px] pt-[45px] max-lg:p-6",
         dark ? "bg-ink" : "bg-white",
         className,
       )}
     >
-      <div className="flex min-w-px flex-1 flex-col gap-[34px]">
+      <div className="flex min-w-px flex-1 flex-col gap-[34px] self-stretch max-lg:gap-5">
         <img src={img("a417f.svg")} alt="" className="h-[39.143px] w-[46px]" />
-        <div className="flex flex-col gap-[77px]">
+        <div className="flex flex-1 flex-col justify-between gap-[77px] max-lg:gap-8">
           <blockquote
-            className={cn("text-[24px] leading-[1.23] tracking-[-0.48px]", dark ? "text-white" : "text-ink/70")}
+            className={cn("text-[24px] leading-[1.23] tracking-[-0.48px] max-lg:text-[18px]", dark ? "text-white" : "text-ink/70")}
           >
             {quote}
           </blockquote>

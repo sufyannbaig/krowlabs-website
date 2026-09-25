@@ -20,8 +20,8 @@ export function ResultCard({ image, label, title, stat, statLabel, titleClassNam
       <div className="overflow-hidden">{image}</div>
       <div className="flex flex-col gap-[18px] font-medium">
         <div className="flex flex-col gap-[14px] leading-[1.3]">
-          <p className="text-[18px] uppercase tracking-[-0.36px] text-ink/60">{label}</p>
-          <p className={cn("text-[23px] tracking-[-0.46px] text-ink", titleClassName)}>{title}</p>
+          <p className="text-[18px] uppercase tracking-[-0.36px] text-ink/60 max-lg:text-[14px]">{label}</p>
+          <p className={cn("text-[23px] tracking-[-0.46px] text-ink max-lg:text-[19px]", titleClassName)}>{title}</p>
         </div>
         <p className="leading-[1.3] tracking-[-0.4px] text-ink">
           <span className="text-[36px] text-brand">{stat}</span>
@@ -32,7 +32,7 @@ export function ResultCard({ image, label, title, stat, statLabel, titleClassNam
     </div>
   );
   const classes =
-    "group flex min-w-px flex-1 flex-col bg-white p-[42px] drop-shadow-[0px_0px_4.65px_rgba(0,0,0,0.03)]";
+    "group flex min-w-px flex-1 flex-col bg-white p-[42px] drop-shadow-[0px_0px_4.65px_rgba(0,0,0,0.03)] transition-[transform,box-shadow] duration-500 ease-out hover:-translate-y-2 hover:shadow-[0_30px_60px_-25px_rgba(0,0,0,0.35)] max-lg:p-5";
   return href ? (
     <Link to={href} className={classes}>
       {content}

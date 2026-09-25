@@ -7,6 +7,7 @@ import { EngagementBlock, headingLG, headingXL, ResultsBlock, TestimonialsBlock 
 import { HeroImage, ServiceHero } from "@/components/sections/ServiceHero";
 import { testimonials } from "@/content/testimonials";
 import { useSeo } from "@/lib/seo";
+import { Reveal } from "@/components/motion/Reveal";
 import { cn } from "@/lib/utils";
 import { vibeCodingFaq } from "@/content/faqs";
 
@@ -33,30 +34,34 @@ export default function UiUxDesign() {
         image={<HeroImage src="/work/revsta-platform/cover.webp" className="left-[927px]" />}
       />
 
-      <div className="h-[51px]" />
+      <div className="h-[51px] max-lg:hidden" />
       <FlatRibbon className="z-10 -mt-[1.46px]" />
 
-      <section className="bg-[#fff7f2] px-[60px] py-20">
-        <div className="mx-auto flex max-w-[1314px] items-start justify-between">
-          <h2 className={cn(headingLG, "whitespace-nowrap text-ink")}>
-            What <span className="text-black/60">Is Included</span>
-          </h2>
-          <div className="flex w-[720px] flex-col gap-10 text-[22px] leading-[1.4] text-ink/70">
-            <div className="flex items-center gap-10">
-              <p className="w-[340px]">User flows and wireframes, grounded in how people actually use the product</p>
-              <p className="w-[340px]">High-fidelity UI for web and mobile, pixel-checked before handoff</p>
-            </div>
-            <div className="flex items-start gap-10">
-              <p className="w-[340px]">Developer handoff support, so what ships matches what was designed</p>
-              <p className="w-[340px]">A design system your team can keep extending without you</p>
-            </div>
+      <section className="bg-[#fff7f2] px-[60px] py-20 max-lg:mt-6 max-lg:px-5 max-lg:py-16">
+        <div className="mx-auto flex max-w-[1314px] items-start justify-between max-lg:flex-col max-lg:gap-8">
+          <Reveal>
+            <h2 className={cn(headingLG, "whitespace-nowrap text-ink")}>
+              What <span className="text-black/60">Is Included</span>
+            </h2>
+          </Reveal>
+          <div className="grid w-[720px] grid-cols-2 gap-10 text-[22px] leading-[1.4] text-ink/70 max-lg:w-full max-lg:gap-6 max-lg:text-[17px] max-sm:grid-cols-1">
+            {[
+              "User flows and wireframes, grounded in how people actually use the product",
+              "High-fidelity UI for web and mobile, pixel-checked before handoff",
+              "Developer handoff support, so what ships matches what was designed",
+              "A design system your team can keep extending without you",
+            ].map((t, i) => (
+              <Reveal key={t} delay={i * 0.08}>
+                <p>{t}</p>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-gradient-to-b from-brand to-ink to-[113.8%] py-20 pl-[60px] pr-[61px]">
+      <section className="bg-gradient-to-b from-brand to-ink to-[113.8%] py-20 pl-[60px] pr-[61px] max-lg:px-5 max-lg:py-16">
         <ResultsBlock
-          className="mx-auto w-[1319px] text-white"
+          className="mx-auto w-[1319px] text-white max-lg:w-full"
           heading={
             <>
               Recent Product <span className="text-white/60">Work</span>
@@ -66,10 +71,9 @@ export default function UiUxDesign() {
         />
       </section>
 
-      <section className="bg-white px-[133px] py-20">
-        <TestimonialsBlock
+      <TestimonialsBlock
           dark
-          className="text-ink"
+          className="bg-white text-ink"
           heading={
             <>
               What <span className="text-[rgba(1,1,1,0.6)]">clients</span> say
@@ -77,10 +81,10 @@ export default function UiUxDesign() {
           }
           items={[testimonials.contraDeveloper, testimonials.gkTraining]}
         />
-      </section>
 
       <EngagementBlock
         className="mt-20"
+        bg="bg-page"
         theme="light"
         heading={
           <>
@@ -95,7 +99,7 @@ export default function UiUxDesign() {
         ]}
       />
 
-      <section className="mt-40 bg-white px-[60px] py-20">
+      <section className="mt-40 bg-white px-[60px] py-20 max-lg:mt-16 max-lg:px-5 max-lg:py-16">
         <FaqSection
           className="mx-auto max-w-[1320px]"
           heading={
@@ -107,9 +111,9 @@ export default function UiUxDesign() {
         />
       </section>
 
-      <CtaBanner className="mt-40" title="Ready for a product that feels as good as it works?" buttonVariant="dark" />
+      <CtaBanner className="mt-40 max-lg:mt-24" title="Ready for a product that feels as good as it works?" buttonVariant="dark" />
 
-      <Footer className="mt-40" />
+      <Footer className="mt-40 max-lg:mt-24" />
     </main>
   );
 }

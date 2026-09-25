@@ -1,4 +1,5 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
+import { Reveal } from "@/components/motion/Reveal";
 import { Navbar } from "@/components/layout/Navbar";
 import { Button, type ButtonVariant } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
@@ -41,19 +42,33 @@ export function ServiceHero({
   children,
 }: Props) {
   return (
-    <section className="relative h-[797px]">
+    <section className="relative h-[797px] max-lg:h-auto max-lg:pb-4 max-lg:pt-[110px]">
       <HeroGrid src={grid} className={gridClassName} />
       {children}
       <Navbar />
-      <div className="relative mx-auto h-full max-w-[1440px]">
-        <div className="absolute top-[254px] flex flex-col items-start" style={{ left, width, gap }}>
-          <div className="flex flex-col" style={{ gap: innerGap, width: headingWidth }}>
-            {heading}
-            <p className={cn("w-[676px] text-[18px] leading-[1.4] text-ink/60", introClassName)}>{intro}</p>
+      <div className="relative mx-auto h-full max-w-[1440px] max-lg:px-5">
+        <div
+          className="absolute left-[var(--hero-left)] top-[254px] flex w-[var(--hero-w)] flex-col items-start gap-[var(--hero-gap)] max-lg:static max-lg:w-auto max-lg:gap-6"
+          style={{ "--hero-left": `${left}px`, "--hero-w": `${width}px`, "--hero-gap": `${gap}px` } as CSSProperties}
+        >
+          <div
+            className="flex w-[var(--hero-hw)] flex-col gap-[var(--hero-inner-gap)] max-lg:w-auto max-lg:gap-4 max-lg:[&_br]:hidden max-lg:[&_h1]:!w-auto max-lg:[&_h1]:!text-[40px] max-lg:[&_h1]:!leading-[1.1] max-lg:[&_h1]:!tracking-[-1.6px]"
+            style={
+              { "--hero-hw": headingWidth ? `${headingWidth}px` : "auto", "--hero-inner-gap": `${innerGap}px` } as CSSProperties
+            }
+          >
+            <Reveal immediate>{heading}</Reveal>
+            <Reveal immediate delay={0.12}>
+              <p className={cn("w-[676px] text-[18px] leading-[1.4] text-ink/60 max-lg:!h-auto max-lg:w-auto max-lg:!pb-0 max-lg:text-[16px]", introClassName)}>
+                {intro}
+              </p>
+            </Reveal>
           </div>
-          <Button variant={buttonVariant} raised>
-            Book a Free Strategy Call
-          </Button>
+          <Reveal immediate delay={0.24}>
+            <Button variant={buttonVariant} raised>
+              Book a Free Strategy Call
+            </Button>
+          </Reveal>
         </div>
         {image}
       </div>

@@ -34,4 +34,76 @@
   .accent {
     @apply font-serif font-normal italic leading-none text-brand;
   }
+
+  /* Infinite marquee: the track holds two identical copies and slides by half its width. */
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee var(--marquee-duration, 40s) linear infinite;
+  }
+  .marquee-track[data-direction="right"] {
+    animation-direction: reverse;
+  }
+  .marquee-pause:hover .marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+/* CTA background: light streaks shooting along the panel's diagonal texture lines. */
+.cta-streak {
+  position: absolute;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.85));
+  transform: rotate(-58deg) translateX(-40vw);
+  transform-origin: left center;
+  opacity: 0;
+  animation-name: cta-streak;
+  animation-timing-function: cubic-bezier(0.55, 0, 0.45, 1);
+  animation-iteration-count: infinite;
+}
+
+@keyframes cta-streak {
+  0% {
+    transform: rotate(-58deg) translateX(-20vw);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: rotate(-58deg) translateX(110vw);
+    opacity: 0;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Laptop widths: scale the 1440px desktop frame (see DesktopScale.tsx). */
+@media (min-width: 1024px) and (max-width: 1439.98px) {
+  .kl-scale {
+    zoom: var(--kl-zoom, 1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+  .cta-streak {
+    display: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }

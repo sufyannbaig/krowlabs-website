@@ -1,20 +1,21 @@
 import type { AnchorHTMLAttributes } from "react";
 import { Link } from "react-router-dom";
+import { bookingUrl } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 const variants = {
-  gradient: "bg-brand-button text-white",
-  brand: "bg-brand text-white",
-  black: "bg-black text-white",
-  dark: "bg-[#1c1c1c] text-white",
-  white: "bg-white text-black",
-  outline: "border border-ink px-[19px] py-[13px] text-ink",
-  "outline-muted": "border border-ink/40 px-[19px] py-[13px] text-ink/40",
-  "outline-white": "border border-white px-[19px] py-[13px] text-white",
+  gradient: "bg-brand-button text-white hover:brightness-110",
+  brand: "bg-brand text-white hover:bg-[#e8761f]",
+  black: "bg-black text-white hover:bg-ink",
+  dark: "bg-[#1c1c1c] text-white hover:bg-black",
+  white: "bg-white text-black hover:bg-page",
+  outline: "border border-ink px-[19px] py-[13px] text-ink hover:bg-ink hover:text-white",
+  "outline-muted": "border border-ink/40 px-[19px] py-[13px] text-ink/40 hover:border-ink hover:text-ink",
+  "outline-white": "border border-white px-[19px] py-[13px] text-white hover:bg-white hover:text-ink",
 } as const;
 
 const sizes = {
-  lg: "text-[20px] tracking-[-0.4px]",
+  lg: "text-[20px] tracking-[-0.4px] max-lg:text-[16px]",
   md: "text-[16px] tracking-[-0.32px]",
 } as const;
 
@@ -32,12 +33,12 @@ export function Button({
   size = "lg",
   raised = false,
   className,
-  href = "#contact",
+  href = bookingUrl,
   children,
   ...props
 }: ButtonProps) {
   const classes = cn(
-    "inline-flex shrink-0 items-center justify-center whitespace-nowrap px-5 py-[14px] font-medium",
+    "inline-flex shrink-0 items-center justify-center whitespace-nowrap px-5 py-[14px] font-medium transition-[background-color,color,border-color,filter,transform] duration-300 ease-out hover:-translate-y-0.5",
     variants[variant],
     sizes[size],
     "leading-[1.4]",
