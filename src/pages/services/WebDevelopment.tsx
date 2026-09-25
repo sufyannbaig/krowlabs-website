@@ -1,15 +1,21 @@
 import { Footer } from "@/components/layout/Footer";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { FaqSection } from "@/components/sections/Faq";
-import { TrustBar } from "@/components/sections/HeroBackdrop";
-import { ResultImage } from "@/components/sections/ResultCard";
+import { resultCards } from "@/content/resultCards";
 import { headingXL, IncludedColumns, ResultsBlock, TestimonialsBlock } from "@/components/sections/ServiceBlocks";
 import { HeroImage, ServiceHero } from "@/components/sections/ServiceHero";
 import { Container } from "@/components/ui/Container";
 import { vibeCodingFaq } from "@/content/faqs";
-import { cn, img } from "@/lib/utils";
+import { testimonials } from "@/content/testimonials";
+import { useSeo } from "@/lib/seo";
+import { cn } from "@/lib/utils";
 
 export default function WebDevelopment() {
+  useSeo({
+    title: "Website Development",
+    description:
+      "Landing pages and full marketing sites built fast with an AI-assisted workflow and reviewed by a senior designer at every step. Framer, Webflow, Shopify or your stack.",
+  });
   return (
     <main className="overflow-x-clip">
       <ServiceHero
@@ -23,10 +29,10 @@ export default function WebDevelopment() {
           </h1>
         }
         intro="Landing pages and full marketing sites, built with a vibe-coding, AI-assisted workflow and reviewed by a senior designer at every step, so speed never means sloppy."
-        image={<HeroImage src="2fd20.jpg" className="left-[928px]" />}
+        image={<HeroImage src="/work/b2b-saas-website/cover.webp" className="left-[928px]" />}
       />
 
-      <TrustBar className="bg-gradient-to-r from-brand-warm from-[21.154%] to-brand-deep" />
+      <div className="h-[51px]" />
 
       <IncludedColumns
         className="bg-ink text-white"
@@ -49,25 +55,10 @@ export default function WebDevelopment() {
           className="text-black"
           heading={
             <>
-              Recent <span className="accent">Cro</span> <span className="text-black/60">Results</span>
+              Recent <span className="accent">Build</span> <span className="text-black/60">Work</span>
             </>
           }
-          cards={[
-            {
-              label: "REPLIX AI · SAAS",
-              title: "Upgraded a Shopify ad-creative SaaS platform, demo built and shipped in Lovable",
-              stat: "+45%",
-              statLabel: "Demo Signups",
-              image: <ResultImage src={img("7eefb.jpg")} className="border-[1.322px] border-white/[0.81]" />,
-            },
-            {
-              label: "ALGERA LABS · SAAS",
-              title: "Site QA and build support on a live Framer site",
-              stat: "100%",
-              statLabel: "QA Passed",
-              image: <ResultImage src={img("5cd24.jpg")} />,
-            },
-          ]}
+          cards={resultCards(["b2b-saas-website", "b2b-agency-website"])}
         />
       </Container>
 
@@ -79,22 +70,7 @@ export default function WebDevelopment() {
               What clients<span className="text-white/60"> say</span>
             </>
           }
-          items={[
-            {
-              quote:
-                '"The speed and attention to detail were unmatched. Our new demo interface was built and shipped in record time without compromising quality."',
-              name: "Saad m / Replix AI",
-              role: "Founder & CEO",
-              avatar: "cc230.png",
-            },
-            {
-              quote:
-                ' "No fluff, no endless account manager check-ins—just high-level strategy and fast execution that fixed our onboarding drop-offs."',
-              name: "Jenkins / Algera Labs",
-              role: "Head of Product",
-              avatar: "5ecdd.png",
-            },
-          ]}
+          items={[testimonials.contraDeveloper, testimonials.gkTraining]}
         />
       </section>
 

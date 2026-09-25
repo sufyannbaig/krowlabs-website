@@ -1,14 +1,21 @@
 import { Footer } from "@/components/layout/Footer";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { FaqSection } from "@/components/sections/Faq";
-import { ResultImage } from "@/components/sections/ResultCard";
+import { resultCards } from "@/content/resultCards";
 import { CrossRibbons } from "@/components/sections/Ribbons";
 import { EngagementBlock, headingXL, IncludedColumns, ResultsBlock, TestimonialsBlock } from "@/components/sections/ServiceBlocks";
 import { HeroImage, ServiceHero } from "@/components/sections/ServiceHero";
 import { Container } from "@/components/ui/Container";
+import { testimonials } from "@/content/testimonials";
+import { useSeo } from "@/lib/seo";
 import { cn, img } from "@/lib/utils";
 
 export default function BrandIdentity() {
+  useSeo({
+    title: "Brand Identity",
+    description:
+      "Logo, visual identity and brand guidelines that hold up everywhere your brand shows up, from product UI to packaging, menus and signage.",
+  });
   return (
     <main className="overflow-x-clip">
       <ServiceHero
@@ -31,11 +38,7 @@ export default function BrandIdentity() {
             <div aria-hidden className="pointer-events-none absolute left-[1377px] top-[212px] size-[158px]">
               <img src={img("917b4.svg")} alt="" className="absolute inset-[-196.2%] size-[492.4%] max-w-none" />
             </div>
-            <HeroImage
-              src="e8f9d.jpg"
-              className="left-[928px]"
-              imgClassName="left-[-8.63%] top-[-89.64%] h-[270.41%] w-[117.26%] object-fill"
-            />
+            <HeroImage src="/work/korax/cover.webp" className="left-[928px]" />
           </>
         }
       />
@@ -68,32 +71,10 @@ export default function BrandIdentity() {
           rowClassName="items-start justify-center px-0"
           heading={
             <>
-              Recent Cro <span className="accent">Results</span>
+              Recent Brand <span className="accent">Work</span>
             </>
           }
-          cards={[
-            {
-              label: "KEBABERIA SABRI RESTAURANT · F&B",
-              title: " Full brand identity, from logo to guidelines",
-              stat: "+35%",
-              statLabel: "In-Store Foot Traffic",
-              image: <ResultImage src={img("7eefb.jpg")} className="border-[1.322px] border-white/[0.81]" />,
-            },
-            {
-              label: "OMNIZS · DTC / GEN Z APPAREL",
-              title: "Brand identity for a Gen Z clothing brand",
-              stat: "2.5x",
-              statLabel: "Social Engagement",
-              image: <ResultImage src={img("5cd24.jpg")} />,
-            },
-            {
-              label: "ELLA / REVSTA / KORAX · BRAND IDENTITY",
-              title: "Core brand identity projects across multiple industries",
-              stat: "100%",
-              statLabel: "Brand Consistency",
-              image: <ResultImage src={img("5cd24.jpg")} />,
-            },
-          ]}
+          cards={resultCards(["korax", "kebabberia-sabri", "omnizs"])}
         />
       </Container>
 
@@ -105,22 +86,7 @@ export default function BrandIdentity() {
               What <span className="text-white/60">clients</span> say
             </>
           }
-          items={[
-            {
-              quote:
-                "\"Created a distinct visual identity that completely modernized our restaurant's look—from our menus to physical packaging. Our customers love it.\"",
-              name: "Kebaberia Sabri Restaurant",
-              role: "Owner & Manager",
-              avatar: "cc230.png",
-            },
-            {
-              quote:
-                ' "Nailed the Gen Z aesthetic on the first pass. The brand guidelines made scaling our social graphics and product drops smooth and effortless."',
-              name: "OmniZs",
-              role: "Founder & Creative Director",
-              avatar: "5ecdd.png",
-            },
-          ]}
+          items={[testimonials.gkTraining, testimonials.contraDeveloper]}
         />
       </section>
 

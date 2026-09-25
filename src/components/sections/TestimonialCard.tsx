@@ -4,7 +4,9 @@ export type Testimonial = {
   quote: string;
   name: string;
   role: string;
-  avatar: string;
+  /** Photo in /public/images; when missing, `initials` are shown in a brand-colored circle. */
+  avatar?: string;
+  initials?: string;
 };
 
 type Props = Testimonial & {
@@ -13,7 +15,7 @@ type Props = Testimonial & {
   className?: string;
 };
 
-export function TestimonialCard({ quote, name, role, avatar, dark = false, className }: Props) {
+export function TestimonialCard({ quote, name, role, avatar, initials, dark = false, className }: Props) {
   return (
     <figure
       className={cn(
@@ -31,8 +33,17 @@ export function TestimonialCard({ quote, name, role, avatar, dark = false, class
             {quote}
           </blockquote>
           <figcaption className="flex items-start gap-[14px]">
-            <img src={img(avatar)} alt="" width={46} height={46} className="size-[46px] shrink-0" />
-            <div className="flex flex-col justify-center whitespace-nowrap leading-[1.4]">
+            {avatar ? (
+              <img src={img(avatar)} alt="" width={46} height={46} className="size-[46px] shrink-0 rounded-full" />
+            ) : (
+              <span
+                aria-hidden
+                className="flex size-[46px] shrink-0 items-center justify-center rounded-full bg-brand text-[16px] font-medium text-white"
+              >
+                {initials}
+              </span>
+            )}
+            <div className="flex flex-col justify-center leading-[1.4]">
               <p className={cn("text-[18px] tracking-[-0.36px]", dark ? "text-white" : "text-ink")}>{name}</p>
               <p className={cn("text-[14px]", dark ? "text-white/[0.74]" : "text-ink/[0.74]")}>{role}</p>
             </div>

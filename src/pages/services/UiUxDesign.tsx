@@ -1,15 +1,21 @@
 import { Footer } from "@/components/layout/Footer";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { FaqSection } from "@/components/sections/Faq";
-import { TrustBar } from "@/components/sections/HeroBackdrop";
-import { ResultImage } from "@/components/sections/ResultCard";
+import { resultCards } from "@/content/resultCards";
 import { FlatRibbon } from "@/components/sections/Ribbons";
 import { EngagementBlock, headingLG, headingXL, ResultsBlock, TestimonialsBlock } from "@/components/sections/ServiceBlocks";
 import { HeroImage, ServiceHero } from "@/components/sections/ServiceHero";
-import { cn, img } from "@/lib/utils";
+import { testimonials } from "@/content/testimonials";
+import { useSeo } from "@/lib/seo";
+import { cn } from "@/lib/utils";
 import { vibeCodingFaq } from "@/content/faqs";
 
 export default function UiUxDesign() {
+  useSeo({
+    title: "UI/UX Design",
+    description:
+      "Product design for SaaS platforms and mobile apps, from first wireframe to a design system your team can keep building on.",
+  });
   return (
     <main className="overflow-x-clip">
       <ServiceHero
@@ -24,10 +30,10 @@ export default function UiUxDesign() {
           </h1>
         }
         intro="UI/UX for SaaS platforms and mobile apps, from first wireframe to a design system your team can keep building on."
-        image={<HeroImage src="4e44c.jpg" className="left-[927px]" />}
+        image={<HeroImage src="/work/revsta-platform/cover.webp" className="left-[927px]" />}
       />
 
-      <TrustBar className="bg-gradient-to-r from-brand-warm from-[21.154%] to-brand-deep" />
+      <div className="h-[51px]" />
       <FlatRibbon className="z-10 -mt-[1.46px]" />
 
       <section className="bg-[#fff7f2] px-[60px] py-20">
@@ -53,31 +59,10 @@ export default function UiUxDesign() {
           className="mx-auto w-[1319px] text-white"
           heading={
             <>
-              Recent Cro <span className="text-white/60">Results</span>
+              Recent Product <span className="text-white/60">Work</span>
             </>
           }
-          cards={[
-            {
-              label: "PCX TEAM · B2B SAAS",
-              title: "Product design for a B2B coaching platform",
-              titleClassName: "tracking-[-0.23px]",
-              stat: "+40%",
-              statLabel: "User Engagement",
-              image: <ResultImage src={img("7d3de.jpg")} className="shadow-[-4px_5px_13.8px_0px_rgba(0,0,0,0.15)]" />,
-            },
-            {
-              label: "GROWPATH (KIDEMMY) · CONSUMER APP",
-              title: "UI/UX and early branding for a birth-to-15 parenting app, from concept to build-ready screens",
-              stat: "40+",
-              statLabel: "Build-Ready Screens",
-              image: (
-                <ResultImage
-                  src={img("41d79.jpg")}
-                  imgClassName="left-[0.82%] top-[0.12%] h-[146.34%] w-full object-fill"
-                />
-              ),
-            },
-          ]}
+          cards={resultCards(["revsta-platform", "fintech-investor-landing"])}
         />
       </section>
 
@@ -90,22 +75,7 @@ export default function UiUxDesign() {
               What <span className="text-[rgba(1,1,1,0.6)]">clients</span> say
             </>
           }
-          items={[
-            {
-              quote:
-                '"Transformed our complex B2B workflows into an intuitive, polished platform. The design system makes shipping new features effortless."',
-              name: "Saad m / Replix AI",
-              role: "Head of Product · PCx Team",
-              avatar: "cc230.png",
-            },
-            {
-              quote:
-                '"Brought our parenting app concept to life with incredible UI and thoughtful user flows. Handed over clean, build-ready screens on schedule."',
-              name: "Jenkins / Algera Labs",
-              role: "Founder & CEO · GrowPath (Kidemmy)",
-              avatar: "5ecdd.png",
-            },
-          ]}
+          items={[testimonials.contraDeveloper, testimonials.gkTraining]}
         />
       </section>
 

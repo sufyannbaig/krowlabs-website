@@ -57,7 +57,7 @@ export function ServiceHero({
         </div>
         {image}
       </div>
-      {showLogos && <LogoStrip className="top-[719px]" />}
+      {showLogos && <LogoStrip className="top-[715px]" />}
     </section>
   );
 }

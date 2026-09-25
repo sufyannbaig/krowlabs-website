@@ -6,4 +6,4 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 /** Figma asset exported from the Krow Labs file, stored in /public/images. */
-export const img = (file: string) => `/images/${file}`;
+export const img = (file: string) => (file.startsWith("/") ? file : `/images/${file}`);

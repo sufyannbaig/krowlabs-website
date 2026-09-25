@@ -1,19 +1,19 @@
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
+// TODO: add the Instagram and Dribbble profile URLs.
 const columns = [
-  { title: "Site", width: "w-[118px]", links: [["Services", "/#services"], ["Work", "/#work"], ["About", "/#about"]] },
-  {
-    title: "Contact",
-    links: [
-      ["sales@krowlabs.com", "mailto:sales@krowlabs.com"],
-      ["Portfolio", "https://www.behance.net/sufyannbaig"],
-    ],
-  },
+  { title: "Site", width: "w-[118px]", links: [["Services", "/#services"], ["Work", "/work"], ["About", "/#about"]] },
+  { title: "Careers", links: [["hr@krowlabs.com", "mailto:hr@krowlabs.com"]] },
   {
     title: "Connect",
     width: "w-[118px]",
-    links: [["LinkedIn", "#"], ["Instagram", "#"], ["X (Twitter)", "#"], ["Behance", "https://www.behance.net/sufyannbaig"], ["Dribbble", "#"]],
+    links: [
+      ["LinkedIn", "https://www.linkedin.com/in/sufyanbaig/"],
+      ["Instagram", "#"],
+      ["Behance", "https://www.behance.net/sufyannbaig"],
+      ["Dribbble", "#"],
+    ],
   },
 ];
 
@@ -59,7 +59,7 @@ export function Footer({ className }: { className?: string }) {
               <ul className="flex flex-col gap-3 text-[16px] tracking-[-0.16px] text-black/60">
                 {col.links.map(([label, href]) => (
                   <li key={label} className="whitespace-nowrap">
-                    <a href={href} className={cn(label === "Portfolio" && "underline")}>
+                    <a href={href} {...(href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}>
                       {label}
                     </a>
                   </li>
@@ -71,9 +71,9 @@ export function Footer({ className }: { className?: string }) {
 
         <p
           aria-hidden
-          className="absolute left-[calc(50%-737px)] top-[475px] whitespace-nowrap text-[337.121px] font-medium leading-[1.11] tracking-[-13.4848px] text-ink"
+          className="absolute left-[calc(50%-747px)] top-[471px] whitespace-nowrap text-[344.398px] font-semibold leading-[1.11] tracking-[-13.7759px] text-ink"
         >
-          Krow <span className="font-serif font-normal italic leading-none">Labs</span>
+          Krow<span className="font-serif font-normal italic leading-none">Labs</span>
         </p>
       </div>
     </footer>

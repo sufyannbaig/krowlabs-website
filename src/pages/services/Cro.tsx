@@ -1,17 +1,20 @@
 import { Footer } from "@/components/layout/Footer";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { FaqSection } from "@/components/sections/Faq";
-import { TrustBar } from "@/components/sections/HeroBackdrop";
-import { ResultImage } from "@/components/sections/ResultCard";
+import { resultCards } from "@/content/resultCards";
 import { EngagementBlock, headingLG, headingXL, ResultsBlock, TestimonialsBlock } from "@/components/sections/ServiceBlocks";
 import { HeroImage, ServiceHero } from "@/components/sections/ServiceHero";
 import { Container } from "@/components/ui/Container";
-import { cn, img } from "@/lib/utils";
-
-const genericQuote =
-  ' "No fluff, no endless account manager check-ins—just high-level strategy and fast execution that fixed our onboarding drop-offs."';
+import { provenResults, testimonials } from "@/content/testimonials";
+import { useSeo } from "@/lib/seo";
+import { cn } from "@/lib/utils";
 
 export default function Cro() {
+  useSeo({
+    title: "CRO & Conversion-Focused Design",
+    description:
+      "A full audit of your site or app plus a prioritized fix list ranked by revenue impact. Conversion rate optimization for ecommerce, SaaS and service brands.",
+  });
   return (
     <main className="overflow-x-clip">
       <ServiceHero
@@ -29,10 +32,10 @@ export default function Cro() {
           </h1>
         }
         intro="A full audit of your site or app, plus a prioritized fix list ranked by revenue impact. No guesswork, no redesign for the sake of it."
-        image={<HeroImage src="936a6.jpg" className="left-[927px]" />}
+        image={<HeroImage src="/work/zaffo-coffee/cover.webp" className="left-[927px]" />}
       />
 
-      <TrustBar className="bg-brand-line" />
+      <div className="h-[51px]" />
 
       <section className="bg-white px-[60px] py-20">
         <div className="mx-auto flex w-full max-w-[1320px] flex-col items-center gap-10">
@@ -60,31 +63,19 @@ export default function Cro() {
           className="mx-auto w-[1319px] text-white"
           heading={
             <>
-              Recent Cro <span className="text-white/60">Results</span>
+              Recent CRO <span className="text-white/60">Work</span>
             </>
           }
-          cards={[
-            {
-              label: "ZAFFO · DTC / E-COMMERCE",
-              title: "Full funnel audit and rebuild, from product page to checkout",
-              stat: "+28%",
-              statLabel: "Revenue Per Visitor",
-              image: <ResultImage src={img("7d3de.jpg")} className="shadow-[-4px_5px_13.8px_0px_rgba(0,0,0,0.15)]" />,
-            },
-            {
-              label: "GRACIE SPORTS",
-              title: "Homepage CRO strategy and location-page SEO architecture",
-              stat: "+2.1x",
-              statLabel: "Organic Booking Rate",
-              image: (
-                <ResultImage
-                  src={img("41d79.jpg")}
-                  imgClassName="left-[0.82%] top-[0.12%] h-[146.34%] w-full object-fill"
-                />
-              ),
-            },
-          ]}
+          cards={resultCards(["zaffo-coffee", "optiwrite"])}
         />
+        <ul className="mx-auto mt-10 grid w-[1319px] grid-cols-3 gap-[47px] px-[74px]">
+          {provenResults.map((r) => (
+            <li key={r.value} className="flex flex-col gap-2 border-t border-white/30 pt-5 text-white">
+              <span className="text-[36px] font-medium leading-[1.2] tracking-[-1px]">{r.value}</span>
+              <span className="text-[16px] leading-[1.4] text-white/70">{r.label}</span>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <TestimonialsBlock
@@ -94,10 +85,7 @@ export default function Cro() {
             What <span className="accent">clients</span> say
           </>
         }
-        items={[
-          { quote: genericQuote, name: "Jenkins", role: "Product Lead at FlowPulse", avatar: "cc230.png" },
-          { quote: genericQuote, name: "Jenkins", role: "Product Lead at FlowPulse", avatar: "5ecdd.png" },
-        ]}
+        items={[testimonials.gkTraining, testimonials.contraLandingPage]}
       />
 
       <EngagementBlock

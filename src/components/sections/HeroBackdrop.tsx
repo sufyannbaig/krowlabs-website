@@ -1,3 +1,4 @@
+import { clientLogos } from "@/content/clients";
 import { cn, img } from "@/lib/utils";
 
 /** Faint square grid with a few filled cells that sits behind every hero. */
@@ -15,29 +16,21 @@ export function HeroGrid({ src = "d403b.svg", className }: { src?: string; class
   );
 }
 
-/** Row of client logos with soft fades on both edges. */
+
+/** Row of client logos, centered and bleeding past both edges like the design. */
 export function LogoStrip({ className }: { className?: string }) {
   return (
-    <div className={cn("pointer-events-none absolute inset-x-0 h-[51px]", className)}>
-      <div className="absolute left-[calc(50%+9.5px)] top-[11px] flex -translate-x-1/2 items-center gap-[110px]">
-        <img src={img("11384.svg")} alt="" className="h-[26px] w-[110px] shrink-0" />
-        <div className="relative h-[26px] w-[196px] shrink-0 overflow-hidden">
-          <img src={img("cfbff.svg")} alt="" className="absolute left-0 top-0 h-full w-[18.7%] max-w-none" />
-          <img src={img("88936.svg")} alt="" className="absolute inset-[20.59%_0.27%_24.56%_22.59%] h-[54.85%] w-[77.14%] max-w-none" />
-        </div>
-        <div className="relative h-[26px] w-[140px] shrink-0 overflow-hidden">
-          <img src={img("9f564.svg")} alt="" className="absolute left-0 top-0 h-full w-[18.6%] max-w-none" />
-          <img src={img("de676.svg")} alt="" className="absolute inset-[12.5%_0.13%_9.2%_24.19%] h-[78.3%] w-[75.68%] max-w-none" />
-        </div>
-        <img src={img("11384.svg")} alt="" className="h-[26px] w-[110px] shrink-0" />
-        <img src={img("2a4c8.svg")} alt="" className="h-[26px] w-[197px] shrink-0" />
-        <div className="relative h-[26px] w-[140px] shrink-0 overflow-hidden">
-          <img src={img("9f564.svg")} alt="" className="absolute left-0 top-0 h-full w-[18.6%] max-w-none" />
-          <img src={img("a4748.svg")} alt="" className="absolute inset-[12.5%_0.13%_9.2%_24.19%] h-[78.3%] w-[75.68%] max-w-none" />
-        </div>
-      </div>
-      <div className="absolute left-[-13px] top-0 h-[51px] w-[92px] bg-gradient-to-l from-[rgba(255,251,249,0)] to-[#fffbf9]" />
-      <div className="absolute left-[calc(91.67%+44px)] top-0 h-[51px] w-[92px] bg-gradient-to-r from-[rgba(255,251,249,0)] to-[#fffbf9]" />
+    <div className={cn("pointer-events-none absolute inset-x-0 h-[56px]", className)}>
+      <ul
+        aria-label="Clients"
+        className="absolute left-[calc(50%+0.41px)] top-0 flex h-full w-max -translate-x-1/2 items-center gap-[110px]"
+      >
+        {clientLogos.map((l) => (
+          <li key={l.name} className="shrink-0">
+            <img src={img(l.src)} alt={l.name} width={l.w} height={l.h} style={{ width: l.w, height: l.h }} />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

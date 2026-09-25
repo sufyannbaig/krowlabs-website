@@ -1,4 +1,5 @@
 import type { AnchorHTMLAttributes } from "react";
+import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
 const variants = {
@@ -35,19 +36,26 @@ export function Button({
   children,
   ...props
 }: ButtonProps) {
+  const classes = cn(
+    "inline-flex shrink-0 items-center justify-center whitespace-nowrap px-5 py-[14px] font-medium",
+    variants[variant],
+    sizes[size],
+    "leading-[1.4]",
+    raised && "drop-shadow-[0px_14px_11.35px_rgba(0,0,0,0.07)]",
+    className,
+  );
+
+  // Internal routes go through the router so the page doesn't reload.
+  if (href.startsWith("/") && !href.startsWith("//")) {
+    return (
+      <Link to={href} className={classes} {...props}>
+        {children}
+      </Link>
+    );
+  }
+
   return (
-    <a
-      href={href}
-      className={cn(
-        "inline-flex shrink-0 items-center justify-center whitespace-nowrap px-5 py-[14px] font-medium",
-        variants[variant],
-        sizes[size],
-        "leading-[1.4]",
-        raised && "drop-shadow-[0px_14px_11.35px_rgba(0,0,0,0.07)]",
-        className,
-      )}
-      {...props}
-    >
+    <a href={href} className={classes} {...props}>
       {children}
     </a>
   );

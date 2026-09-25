@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/Button";
 import { img } from "@/lib/utils";
 
 const links = [
-  { label: "Work", href: "/#work" },
+  { label: "Work", href: "/work" },
   { label: "Services", href: "/#services" },
   { label: "About", href: "/#about" },
 ];
@@ -17,9 +17,9 @@ export function Navbar() {
         </Link>
         <nav className="flex items-center gap-[50px] text-[18px] leading-[1.4] tracking-[-0.36px] text-ink">
           {links.map((l) => (
-            <a key={l.label} href={l.href}>
+            <Link key={l.label} to={l.href}>
               {l.label}
-            </a>
+            </Link>
           ))}
         </nav>
         <Button variant="gradient" raised>

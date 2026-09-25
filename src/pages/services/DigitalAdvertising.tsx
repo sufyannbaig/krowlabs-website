@@ -1,14 +1,20 @@
 import { Footer } from "@/components/layout/Footer";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { FaqSection } from "@/components/sections/Faq";
-import { TrustBar } from "@/components/sections/HeroBackdrop";
-import { ResultImage } from "@/components/sections/ResultCard";
+import { resultCards } from "@/content/resultCards";
 import { EngagementBlock, headingXL, IncludedColumns, ResultsBlock, TestimonialsBlock } from "@/components/sections/ServiceBlocks";
 import { HeroImage, ServiceHero } from "@/components/sections/ServiceHero";
 import { Container } from "@/components/ui/Container";
-import { cn, img } from "@/lib/utils";
+import { testimonials } from "@/content/testimonials";
+import { useSeo } from "@/lib/seo";
+import { cn } from "@/lib/utils";
 
 export default function DigitalAdvertising() {
+  useSeo({
+    title: "Digital Advertising & Creative",
+    description:
+      "Static ad creative for Google Ads and paid social, designed to match the landing page it sends traffic to.",
+  });
   return (
     <main className="overflow-x-clip">
       <ServiceHero
@@ -24,10 +30,10 @@ export default function DigitalAdvertising() {
           </h1>
         }
         intro="Landing pages and full marketing sites, built with a vibe-coding, AI-assisted workflow and reviewed by a senior designer at every step, so speed never means sloppy."
-        image={<HeroImage src="2fd20.jpg" className="left-[928px]" />}
+        image={<HeroImage src="/work/kryve/cover.webp" className="left-[928px]" />}
       />
 
-      <TrustBar className="bg-white" textClassName="text-ink" />
+      <div className="h-[51px]" />
 
       <IncludedColumns
         className="bg-[linear-gradient(120.98deg,rgb(210,58,18)_5.79%,rgb(245,133,45)_66.43%)] text-white"
@@ -50,26 +56,10 @@ export default function DigitalAdvertising() {
           className="mx-auto max-w-[1440px] text-white"
           heading={
             <>
-              Recent <span className="accent">Cro</span> Results
+              Recent <span className="accent">Ad</span> Work
             </>
           }
-          cards={[
-            {
-              label: "NIBBI · DTC / SNACK",
-              title: "AI-generated ad campaign built around a mascot character, across multiple scene sets",
-              stat: "+42%",
-              statLabel: "CTR (Click-Through Rate)",
-              image: <ResultImage src={img("7eefb.jpg")} className="border-[1.322px] border-white/[0.81]" />,
-            },
-            {
-              label: "OMNIZS · DTC / GEN Z APPAREL",
-              title: "Ad creative built to match campaign landing pages",
-              titleClassName: "tracking-[-0.69px]",
-              stat: "+65%",
-              statLabel: "Lift in Conversion Rate",
-              image: <ResultImage src={img("5cd24.jpg")} />,
-            },
-          ]}
+          cards={resultCards(["kryve", "salten"])}
         />
       </section>
 
@@ -80,22 +70,7 @@ export default function DigitalAdvertising() {
             What <span className="accent">clients</span> say
           </>
         }
-        items={[
-          {
-            quote:
-              '"The AI mascot creatives completely refreshed our ad campaigns. We saw a massive spike in click-through rates almost immediately, and the visual quality across different scenes was top-tier."',
-            name: "Marcus Vance",
-            role: "Head of Growth · NiBBi",
-            avatar: "cc230.png",
-          },
-          {
-            quote:
-              '"Matching our ad creative directly with our landing page visuals made a seamless experience for our audience. Conversion rates jumped significantly within the first two weeks."',
-            name: "Elena Rostova",
-            role: "Brand Manager · OmniZs",
-            avatar: "5ecdd.png",
-          },
-        ]}
+        items={[testimonials.gkTraining, testimonials.contraLandingPage]}
       />
 
       <EngagementBlock

@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { type ReactNode, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
@@ -8,6 +8,11 @@ import { HeroGrid, LogoStrip } from "@/components/sections/HeroBackdrop";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { CrossRibbons } from "@/components/sections/Ribbons";
 import { TestimonialCard } from "@/components/sections/TestimonialCard";
+import { WorkCard } from "@/components/work/WorkCard";
+import { getCaseStudy } from "@/content/caseStudies";
+import { showreel } from "@/content/site";
+import { testimonials } from "@/content/testimonials";
+import { useSeo } from "@/lib/seo";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { cn, img } from "@/lib/utils";
@@ -16,11 +21,11 @@ import { cn, img } from "@/lib/utils";
 
 const collage = [
   // [left, top, boxW, boxH, rotate, image, bordered]
-  { left: 1206, top: 137, w: 315.562, h: 206.517, rotate: 1.97, src: "5cd9b.jpg", border: true },
-  { left: 1046.36, top: 475.31, w: 318.834, h: 211.903, rotate: -3, src: "b1c3a.jpg" },
-  { left: 1206.28, top: 547.75, w: 315.555, h: 206.506, rotate: -1.97, src: "5cd24.jpg" },
-  { left: 1047.72, top: 206.74, w: 315.562, h: 206.517, rotate: 1.97, src: "78229.jpg" },
-  { left: 948, top: 321, w: 309, h: 196, rotate: 0, src: "7eefb.jpg", border: true },
+  { left: 1206, top: 137, w: 315.562, h: 206.517, rotate: 1.97, src: "406a3.webp", border: true },
+  { left: 1046, top: 475, w: 318.834, h: 211.903, rotate: -3, src: "bf1d8.webp" },
+  { left: 1206.28, top: 547.75, w: 315.555, h: 206.506, rotate: -1.97, src: "326d8.webp" },
+  { left: 1047.72, top: 206.74, w: 315.562, h: 206.517, rotate: 1.97, src: "add6a.webp" },
+  { left: 948, top: 321, w: 309, h: 196, rotate: 0, src: "a63fd.webp", border: true },
 ];
 
 function Hero() {
@@ -28,7 +33,7 @@ function Hero() {
     <section className="relative h-[1052px]">
       <div className="absolute inset-0 mx-auto max-w-[1440px]">
         {/* dark texture behind the word "website" */}
-        <img src={img("9d808.png")} alt="" className="absolute left-[455px] top-[264px] h-[79px] w-[256px] object-cover" />
+        <img src={img("9d808.webp")} alt="" className="absolute left-[455px] top-[264px] h-[79px] w-[256px] object-cover" />
       </div>
       <HeroGrid src="d403b.svg" />
       <Navbar />
@@ -72,7 +77,7 @@ function Hero() {
         ))}
       </div>
 
-      <LogoStrip className="top-[855px]" />
+      <LogoStrip className="top-[865px]" />
     </section>
   );
 }
@@ -225,18 +230,12 @@ function WhatWeDo() {
               ))}
             </ul>
             <div className="relative h-[358px] w-[563px] shrink-0 overflow-hidden">
-              <img src={img("0d0be.jpg")} alt="" className="absolute left-0 top-[-8.98%] h-[117.97%] w-full max-w-none" />
+              <img src={img("83d21.webp")} alt="" className="absolute inset-0 size-full object-cover" />
             </div>
           </div>
         </div>
 
-        <div className="relative flex h-[131px] items-center justify-center overflow-hidden px-[58px]">
-          <img
-            src={img("9d808.png")}
-            alt=""
-            aria-hidden
-            className="pointer-events-none absolute left-[-131.21%] top-[0.12%] h-[1991.77%] w-[362.44%] max-w-none"
-          />
+        <div className="relative flex h-[131px] items-center justify-center overflow-hidden bg-[#212121] px-[58px]">
           <div className="relative flex w-[1164px] items-center justify-between">
             <p className="w-[570px] text-[30px] font-medium leading-[1.24] tracking-[-1.2px] text-white">
               Not sure which one you need?
@@ -252,16 +251,41 @@ function WhatWeDo() {
 /* ------------------------------------------------------ Video + process */
 
 function Showreel() {
+  const ref = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+  const play = () => {
+    if (!ref.current) return;
+    ref.current.muted = false;
+    ref.current.controls = true;
+    void ref.current.play();
+    setPlaying(true);
+  };
+
   return (
-    <section className="relative mt-40 h-[750px] w-full">
-      <img src={img("7eefb.jpg")} alt="" className="absolute inset-0 size-full object-cover" />
-      <button
-        type="button"
-        aria-label="Play showreel"
-        className="absolute left-1/2 top-[329px] flex -translate-x-1/2 items-center justify-end overflow-hidden rounded-[66.621px] bg-white/75 px-[31.724px] py-[30.138px]"
-      >
-        <img src={img("cb757.svg")} alt="" className="h-[31.724px] w-[28.552px]" />
-      </button>
+    <section className="relative mt-40 h-[750px] w-full bg-ink">
+      {showreel.video ? (
+        <video
+          ref={ref}
+          src={showreel.video}
+          poster={showreel.poster}
+          className="absolute inset-0 size-full object-cover"
+          playsInline
+          preload="metadata"
+        />
+      ) : (
+        <img src={showreel.poster} alt="" className="absolute inset-0 size-full object-cover" />
+      )}
+      {!playing && (
+        <button
+          type="button"
+          aria-label="Play showreel"
+          onClick={play}
+          disabled={!showreel.video}
+          className="absolute left-1/2 top-[329px] flex -translate-x-1/2 items-center justify-end overflow-hidden rounded-[66.621px] bg-white/75 px-[31.724px] py-[30.138px] disabled:cursor-default"
+        >
+          <img src={img("cb757.svg")} alt="" className="h-[31.724px] w-[28.552px]" />
+        </button>
+      )}
     </section>
   );
 }
@@ -295,37 +319,7 @@ function HowWeWork() {
 
 /* ------------------------------------------------------------ Recent work */
 
-const projects = [
-  {
-    title: "Lumina Skincare",
-    text: "Redesigned a slow storefront to fix high drop-offs on mobile product pages.",
-    textClass: "text-[16px] font-normal",
-    metric: "Mobile Conversions",
-    value: "+42%",
-    image: <img src={img("e1121.jpg")} alt="" className="absolute inset-0 size-full object-cover" />,
-  },
-  {
-    title: "FlowPulse Analytics",
-    text: "Rebuilt a complex onboarding flow to reduce drop-offs during initial signup.",
-    textClass: "text-[20px] tracking-[-0.8px]",
-    metric: "Trial To Paid",
-    value: "+35%",
-    image: (
-      <>
-        <div className="absolute inset-0 bg-[#27262b]" />
-        <img src={img("e0218.jpg")} alt="" className="absolute left-[7.14%] top-[-8.83%] h-[121.22%] w-[85.63%] max-w-none" />
-      </>
-    ),
-  },
-  {
-    title: "Nexus Digital",
-    text: "Re-architected a cluttered agency site into a clean, high-converting funnel.",
-    textClass: "text-[20px] tracking-[-0.8px]",
-    metric: "Inbound Leads",
-    value: "2.8x",
-    image: <img src={img("c3366.jpg")} alt="" className="absolute inset-0 size-full object-cover" />,
-  },
-];
+const featuredWork = ["zaffo-coffee", "revsta-platform", "b2b-saas-website"];
 
 function RecentWork() {
   return (
@@ -338,24 +332,18 @@ function RecentWork() {
           <p className="w-[576px] text-[18px] leading-[1.4] text-white/60">
             A sample of what we have shipped for ecommerce, SaaS, and service brands.
           </p>
+          <div className="flex">
+            <Button variant="outline-white" size="md" href="/work">
+              View all work
+            </Button>
+          </div>
         </div>
 
         <div className="flex w-[640px] flex-col gap-[60px]">
-          {projects.map((p) => (
-            <article key={p.title} className="flex flex-col gap-[30px]">
-              <div className="relative h-[454px] w-full overflow-hidden">{p.image}</div>
-              <div className="flex items-start justify-between font-medium">
-                <div className="flex w-[300px] flex-col gap-[11px] leading-[1.4]">
-                  <h3 className="text-[26px] text-white">{p.title}</h3>
-                  <p className={cn("text-white/60", p.textClass)}>{p.text}</p>
-                </div>
-                <p className="whitespace-pre text-right leading-[1.4] tracking-[-0.8px] text-white/60">
-                  <span className="text-[20px]">{p.metric}  </span>
-                  <span className="text-[36px] text-brand-stat">{p.value}</span>
-                </p>
-              </div>
-            </article>
-          ))}
+          {featuredWork.map((slug) => {
+            const study = getCaseStudy(slug);
+            return study ? <WorkCard key={slug} study={study} theme="dark" /> : null;
+          })}
         </div>
       </Container>
     </section>
@@ -434,7 +422,7 @@ function WhyUs() {
 
           <div className="absolute left-0 top-[174px] flex w-[329px] flex-col gap-[30px]">
             <p className="h-[78px] text-[20px] capitalize leading-[1.28] tracking-[0.2px] text-ink/60">
-              Most engagements start around [YOUR PRICE]. Full pricing on a strategy call.
+              Most engagements start around $499. Full pricing on a strategy call.
             </p>
             <div className="flex">
               <Button variant="brand">Book a Free Strategy Call</Button>
@@ -457,57 +445,33 @@ function WhyUs() {
 
 /* -------------------------------------------------------- Testimonials */
 
-const homeQuote =
-  ' "No fluff, no endless account manager check-ins—just high-level strategy and fast execution that fixed our onboarding drop-offs."';
-
 function Testimonials() {
-  const avatars = ["cc230.png", "5ecdd.png", "bc556.png", "cc230.png"];
+  const items = [testimonials.gkTraining, testimonials.contraLandingPage, testimonials.contraDeveloper];
   return (
     <section className="mt-40 overflow-hidden bg-ink py-20">
-      <div className="relative left-1/2 flex w-[1720px] -translate-x-1/2 flex-col items-center gap-5">
-        <div className="flex w-full flex-col items-center gap-10">
-          <h2 className="w-full text-center text-[60px] font-medium leading-[1.24] tracking-[-2.4px] text-white">
-            What <span className="font-normal text-white/60">clients</span> say
-          </h2>
-          <div className="flex w-full items-center gap-10">
-            {avatars.map((a, i) => (
-              <TestimonialCard
-                key={i}
-                className="w-[400px]"
-                quote={homeQuote}
-                name="Jenkins"
-                role="Product Lead at FlowPulse"
-                avatar={a}
-              />
-            ))}
-          </div>
+      <Container className="flex flex-col items-center gap-10">
+        <h2 className="w-full text-center text-[60px] font-medium leading-[1.24] tracking-[-2.4px] text-white">
+          What <span className="font-normal text-white/60">clients</span> say
+        </h2>
+        <div className="flex w-full items-stretch justify-center gap-10">
+          {items.map((t, i) => (
+            <TestimonialCard key={i} className="w-[400px]" {...t} />
+          ))}
         </div>
-        <div className="flex items-center gap-[26px]">
-          <button type="button" aria-label="Previous" className="flex size-[54px] -scale-x-100 items-center justify-center border-[0.75px] border-white p-[11.25px] opacity-30">
-            <ArrowIcon src="8427d.svg" />
-          </button>
-          <button type="button" aria-label="Next" className="flex size-[54px] items-center justify-center border-[0.75px] border-white p-[11.25px]">
-            <ArrowIcon src="b2bef.svg" />
-          </button>
-        </div>
-      </div>
+      </Container>
     </section>
   );
 }
 
-function ArrowIcon({ src }: { src: string }) {
-  return (
-    <span className="flex size-[36.986px] items-center justify-center">
-      <span className="relative size-[26.153px] rotate-45 overflow-hidden">
-        <img src={img(src)} alt="" className="absolute left-1/4 top-[25.01%] h-1/2 w-1/2" />
-      </span>
-    </span>
-  );
-}
 
 /* ------------------------------------------------------------------ Page */
 
 export default function Index() {
+  useSeo({
+    title: "Krow Labs | Conversion-focused design & development",
+    description:
+      "Krow Labs designs and optimizes the pages your customers actually see: sales pages, product pages, and apps, so they convert more of the traffic you are already paying for.",
+  });
   return (
     <main className="overflow-x-clip">
       <Hero />
@@ -536,7 +500,7 @@ export default function Index() {
             {
               question: "How much does this cost?",
               answer:
-                "[YOUR PRICE RANGE]. Book a free strategy call and we will scope it against your goals before anything is billed.",
+                "$449-$2499. Book a free strategy call and we will scope it against your goals before anything is billed.",
             },
             { question: "How fast can we start?", align: "end" },
             { question: "Do you work with SaaS or ecommerce?", align: "end", questionWidth: 504 },
