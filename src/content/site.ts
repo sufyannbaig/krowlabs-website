@@ -6,7 +6,7 @@
  * Where every "Book a Free Strategy Call" / "Book a Discovery Call" / "Get a Free Conversion Audit"
  * button points. Replace with the booking link (e.g. a Calendly URL). "#contact" scrolls to the footer.
  */
-export const bookingUrl = "#contact";
+export const bookingUrl = "https://cal.com/krowlabs/discovery";
 
 /** Social profiles. Links left as null are hidden until a URL is added. */
 export const socials: { label: string; url: string | null }[] = [

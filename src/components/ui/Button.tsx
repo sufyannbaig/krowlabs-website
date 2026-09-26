@@ -55,8 +55,10 @@ export function Button({
     );
   }
 
+  // External links (the booking page) open in a new tab.
+  const external = href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {};
   return (
-    <a href={href} className={classes} {...props}>
+    <a href={href} className={classes} {...external} {...props}>
       {children}
     </a>
   );
