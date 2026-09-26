@@ -218,6 +218,7 @@ function Showreel() {
       >
         {showreel.video ? (
           <video
+            aria-label="Krow Labs showreel"
             ref={videoRef}
             src={near ? showreel.video : undefined}
             poster={showreel.poster}
@@ -229,7 +230,7 @@ function Showreel() {
             preload="metadata"
           />
         ) : (
-          <img src={showreel.poster} alt="" className="absolute inset-0 size-full object-cover" />
+          <img src={showreel.poster} alt="Krow Labs showreel" className="absolute inset-0 size-full object-cover" />
         )}
         {!playing && (
           <motion.button

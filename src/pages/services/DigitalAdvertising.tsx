@@ -27,7 +27,7 @@ export default function DigitalAdvertising() {
           </h1>
         }
         intro="Landing pages and full marketing sites, built with a vibe-coding, AI-assisted workflow and reviewed by a senior designer at every step, so speed never means sloppy."
-        image={<HeroImage src="/work/kryve/cover.webp" className="left-[928px]" />}
+        image={<HeroImage src="/work/kryve/cover.webp" alt="Kryve sportswear ad creative" className="left-[928px]" />}
       />
 
       <div className="h-[51px] max-lg:hidden" />

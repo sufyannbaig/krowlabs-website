@@ -8,11 +8,11 @@ import { useIsDesktop } from "@/lib/useIsDesktop";
  * [left, top, box width, box height, rotation, image, bordered]
  */
 const cards = [
-  { left: 258, top: 0, w: 315.562, h: 206.517, rotate: 1.97, src: "406a3.webp", border: true },
-  { left: 98, top: 338, w: 318.834, h: 211.903, rotate: -3, src: "bf1d8.webp" },
-  { left: 258.28, top: 410.75, w: 315.555, h: 206.506, rotate: -1.97, src: "326d8.webp" },
-  { left: 99.72, top: 69.74, w: 315.562, h: 206.517, rotate: 1.97, src: "add6a.webp" },
-  { left: 0, top: 184, w: 309, h: 196, rotate: 0, src: "a63fd.webp", border: true },
+  { left: 258, top: 0, w: 315.562, h: 206.517, rotate: 1.97, src: "406a3.webp", border: true, alt: "SaaS website design shown on a desktop monitor" },
+  { left: 98, top: 338, w: 318.834, h: 211.903, rotate: -3, src: "bf1d8.webp", alt: "Limber's snack brand logo on a cap" },
+  { left: 258.28, top: 410.75, w: 315.555, h: 206.506, rotate: -1.97, src: "326d8.webp", alt: "Limber's brand identity on a staff T-shirt" },
+  { left: 99.72, top: 69.74, w: 315.562, h: 206.517, rotate: 1.97, src: "add6a.webp", alt: "Omnizs fashion campaign visual" },
+  { left: 0, top: 184, w: 309, h: 196, rotate: 0, src: "a63fd.webp", border: true, alt: "Replix AI app icon design" },
 ];
 
 const RADIUS = 280; // how far the cursor's "force field" reaches
@@ -86,7 +86,7 @@ function CollageCard({
             )}
             style={{ rotate: card.rotate }}
           >
-            <img src={img(card.src)} alt="" draggable={false} className="pointer-events-none absolute inset-0 size-full object-cover" />
+            <img src={img(card.src)} alt={card.alt} draggable={false} className="pointer-events-none absolute inset-0 size-full object-cover" />
           </motion.div>
         </motion.div>
       </motion.div>

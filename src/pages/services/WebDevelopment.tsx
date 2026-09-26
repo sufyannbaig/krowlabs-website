@@ -26,7 +26,7 @@ export default function WebDevelopment() {
           </h1>
         }
         intro="Landing pages and full marketing sites, built with a vibe-coding, AI-assisted workflow and reviewed by a senior designer at every step, so speed never means sloppy."
-        image={<HeroImage src="/work/b2b-saas-website/cover.webp" className="left-[928px]" />}
+        image={<HeroImage src="/work/b2b-saas-website/cover.webp" alt="B2B SaaS marketing website" className="left-[928px]" />}
       />
 
       <div className="h-[51px] max-lg:hidden" />

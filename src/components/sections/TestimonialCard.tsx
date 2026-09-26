@@ -81,7 +81,7 @@ export function TestimonialCard({ quote, name, role, avatar, initials, source, d
           </blockquote>
           <figcaption className="flex items-center gap-[14px]">
             {avatar ? (
-              <img src={img(avatar)} alt="" width={48} height={48} className="size-12 shrink-0 rounded-full object-cover" />
+              <img src={img(avatar)} alt={name} width={48} height={48} className="size-12 shrink-0 rounded-full object-cover" />
             ) : (
               <span
                 aria-hidden

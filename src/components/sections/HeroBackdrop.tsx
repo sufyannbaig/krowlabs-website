@@ -60,7 +60,17 @@ export function TrustBar({ className, textClassName }: { className?: string; tex
 }
 
 /** Right-hand hero image used on service pages (452 × 294). Eases in on load. */
-export function HeroImage({ src, className, imgClassName }: { src: string; className?: string; imgClassName?: string }) {
+export function HeroImage({
+  src,
+  alt = "",
+  className,
+  imgClassName,
+}: {
+  src: string;
+  alt?: string;
+  className?: string;
+  imgClassName?: string;
+}) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30, scale: 0.96 }}
@@ -71,7 +81,7 @@ export function HeroImage({ src, className, imgClassName }: { src: string; class
         className,
       )}
     >
-      <img src={img(src)} alt="" className={cn("absolute inset-0 size-full max-w-none object-cover", imgClassName)} />
+      <img src={img(src)} alt={alt} className={cn("absolute inset-0 size-full max-w-none object-cover", imgClassName)} />
     </motion.div>
   );
 }

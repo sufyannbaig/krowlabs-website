@@ -28,7 +28,7 @@ export default function UiUxDesign() {
           </h1>
         }
         intro="UI/UX for SaaS platforms and mobile apps, from first wireframe to a design system your team can keep building on."
-        image={<HeroImage src="/work/revsta-platform/cover.webp" className="left-[927px]" />}
+        image={<HeroImage src="/work/revsta-platform/cover.webp" alt="Revsta product platform UI" className="left-[927px]" />}
       />
 
       <div className="h-[51px] max-lg:hidden" />

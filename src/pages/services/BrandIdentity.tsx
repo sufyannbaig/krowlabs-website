@@ -35,7 +35,7 @@ export default function BrandIdentity() {
             <div aria-hidden className="pointer-events-none absolute left-[1377px] top-[212px] size-[158px] max-lg:hidden">
               <img src={img("917b4.svg")} alt="" className="absolute inset-[-196.2%] size-[492.4%] max-w-none" />
             </div>
-            <HeroImage src="/work/korax/cover.webp" className="left-[928px]" />
+            <HeroImage src="/work/korax/cover.webp" alt="Korax brand identity" className="left-[928px]" />
           </>
         }
       />

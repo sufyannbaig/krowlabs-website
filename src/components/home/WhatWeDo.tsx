@@ -147,7 +147,7 @@ function StackedServices() {
         {services.map((s, i) => (
           <Reveal key={s.title} as="li" delay={i * 0.05}>
             <Link to={s.href} className="flex flex-col gap-4 border-t-2 border-ink pt-5">
-              <img src={s.image} alt="" className="aspect-[563/358] w-full object-cover" loading="lazy" />
+              <img src={s.image} alt={`${s.title} project example`} className="aspect-[563/358] w-full object-cover" loading="lazy" />
               <h3 className="text-[28px] font-medium leading-[1.2] tracking-[-1px] text-ink">{s.title}</h3>
               <p className="text-[16px] leading-[1.4] text-ink/60">{s.text}</p>
             </Link>

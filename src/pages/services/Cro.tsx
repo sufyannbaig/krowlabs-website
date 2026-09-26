@@ -31,7 +31,7 @@ export default function Cro() {
           </h1>
         }
         intro="A full audit of your site or app, plus a prioritized fix list ranked by revenue impact. No guesswork, no redesign for the sake of it."
-        image={<HeroImage src="/work/zaffo-coffee/cover.webp" className="left-[927px]" />}
+        image={<HeroImage src="/work/zaffo-coffee/cover.webp" alt="Zaffo Coffee ecommerce store redesign" className="left-[927px]" />}
       />
 
       <div className="h-[51px] max-lg:hidden" />
