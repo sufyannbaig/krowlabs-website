@@ -78,18 +78,16 @@ export function CrossRibbons({ offset = 0, className }: { offset?: number; class
   const place = "absolute top-1/2 -translate-x-1/2 -translate-y-1/2";
   const left = { left: `calc(50% + ${offset}px)` };
   return (
-    <div ref={ref} className={cn("pointer-events-none absolute inset-x-0 top-0 h-[198px] overflow-x-clip max-lg:h-[170px]", className)}>
+    <div ref={ref} className={cn("pointer-events-none absolute inset-x-0 top-0 h-[198px] overflow-x-clip max-lg:h-[170px] max-lg:overflow-y-clip", className)}>
       <motion.div className="absolute inset-0" style={reduce ? undefined : { rotate: darkRotate, x: darkX }}>
         <div className={place} style={left}>
           <Band items={darkItems} direction="left" color="bg-ink" tilt={desktop ? -4.45 : -6} />
-          {/* desktop: dark fill under the band so no light sliver shows between it and the dark section below */}
-          {desktop && (
-            <div
-              aria-hidden
-              className="absolute inset-x-0 top-[calc(100%-2px)] h-[56px] bg-ink"
-              style={{ rotate: "-4.45deg", transformOrigin: "50% -39px" }}
-            />
-          )}
+          {/* dark fill under the band so no light sliver shows between it and the dark section below */}
+          <div
+            aria-hidden
+            className="absolute inset-x-0 top-[calc(100%-2px)] h-[56px] bg-ink max-lg:h-[160px]"
+            style={desktop ? { rotate: "-4.45deg", transformOrigin: "50% -39px" } : { rotate: "-6deg", transformOrigin: "50% -26px" }}
+          />
         </div>
       </motion.div>
       <motion.div className="absolute inset-0" style={reduce ? undefined : { rotate: orangeRotate, x: orangeX }}>
