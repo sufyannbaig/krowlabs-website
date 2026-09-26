@@ -41,7 +41,7 @@ const principles = [
 /** Sufyan's own profiles (the company profiles live in the footer). */
 const founderLinks = [
   { label: "LinkedIn", url: "https://www.linkedin.com/in/sufyanbaig/" },
-  { label: "Behance", url: "https://www.behance.net/sufyannbaig" },
+  { label: "Website", url: "https://sufyanbaig.online/" },
 ];
 const founderCallUrl = "https://cal.com/sufyanbaig/15min";
 
