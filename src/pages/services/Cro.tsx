@@ -89,7 +89,7 @@ export default function Cro() {
             What <span className="accent">clients</span> say
           </>
         }
-        items={[testimonials.gkTraining, testimonials.contraLandingPage]}
+        items={[testimonials.chander, testimonials.gkTraining, testimonials.deborah, testimonials.misk]}
       />
 
       <EngagementBlock

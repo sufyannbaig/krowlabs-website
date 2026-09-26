@@ -17,7 +17,7 @@ import { Container } from "@/components/ui/Container";
 import { WorkCard } from "@/components/work/WorkCard";
 import { getCaseStudy } from "@/content/caseStudies";
 import { auditUrl, showreel } from "@/content/site";
-import { testimonials } from "@/content/testimonials";
+import { featuredTestimonials } from "@/content/testimonials";
 import { staticPages } from "@/content/pages";
 import { useSeo } from "@/lib/seo";
 import { enterToUpperQuarter, useRectProgress } from "@/lib/useRectProgress";
@@ -44,26 +44,38 @@ function Hero() {
 
       <div className="relative mx-auto h-full max-w-[1440px]">
         <div className="absolute left-[60px] top-[254px] flex w-[892px] flex-col gap-[17px] max-lg:static max-lg:w-auto max-lg:gap-6 max-lg:px-5">
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 max-lg:gap-5">
+            {/* mobile only: small proof pill above the headline */}
+            <Reveal immediate className="hidden max-lg:flex">
+              <span className="inline-flex items-center gap-2 rounded-full border border-ink/10 bg-white/80 py-1.5 pl-2 pr-3 text-[13px] font-medium text-ink/70 backdrop-blur">
+                <span className="relative flex size-2">
+                  <span className="absolute inset-0 animate-ping rounded-full bg-brand opacity-60" />
+                  <span className="relative size-2 rounded-full bg-brand" />
+                </span>
+                Top Rated on Upwork · 5.0★ reviews
+              </span>
+            </Reveal>
             <Reveal immediate>
-              <h1 className="text-[72px] font-medium leading-[1.3] tracking-[-4.32px] text-ink max-lg:text-[42px] max-lg:leading-[1.1] max-lg:tracking-[-1.8px]">
+              <h1 className="text-[72px] font-medium leading-[1.3] tracking-[-4.32px] text-ink max-lg:text-[40px] max-lg:leading-[1.12] max-lg:tracking-[-1.6px]">
                 We turn your{" "}
-                <span className="text-white max-lg:bg-ink max-lg:px-1.5">website</span> into your best{" "}
-                <span className="accent">salesperson.</span>
+                <span className="text-white max-lg:inline-block max-lg:bg-[url(/images/9d808.webp)] max-lg:bg-cover max-lg:bg-center max-lg:px-2 max-lg:leading-[1.15]">
+                  website
+                </span>{" "}
+                into your best <span className="accent max-lg:block">salesperson.</span>
               </h1>
             </Reveal>
             <Reveal immediate delay={0.12}>
-              <p className="h-[74px] w-[676px] text-[18px] leading-[1.4] text-ink/60 max-lg:h-auto max-lg:w-auto max-lg:text-[16px]">
+              <p className="h-[74px] w-[676px] text-[18px] leading-[1.4] text-ink/60 max-lg:h-auto max-lg:w-auto max-lg:text-[16px] max-lg:leading-[1.5]">
                 Krow Labs designs and optimizes the pages your customers actually see: sales pages, product pages, and
                 apps, so they convert more of the traffic you are already paying for.
               </p>
             </Reveal>
           </div>
-          <Reveal immediate delay={0.24} className="flex items-center gap-5 max-lg:flex-wrap max-lg:gap-3">
-            <Button variant="gradient" raised>
+          <Reveal immediate delay={0.24} className="flex items-center gap-5 max-lg:mt-2 max-lg:flex-col max-lg:items-stretch max-lg:gap-3">
+            <Button variant="gradient" raised className="max-lg:w-full">
               Book a Free Strategy Call
             </Button>
-            <Button variant="outline" href={auditUrl}>
+            <Button variant="outline" href={auditUrl} className="max-lg:w-full max-lg:bg-white/60">
               Get a Free Conversion Audit
             </Button>
           </Reveal>
@@ -269,7 +281,7 @@ function HowWeWork() {
 
 /* ------------------------------------------------------------ Recent work */
 
-const featuredWork = ["zaffo-coffee", "revsta-platform", "b2b-saas-website"];
+const featuredWork = ["b2b-saas-website", "revsta-platform", "korax"];
 
 /** The intro sticks while the case studies scroll past it. */
 function RecentWork() {
@@ -299,7 +311,7 @@ function RecentWork() {
             const study = getCaseStudy(slug);
             return study ? (
               <Reveal key={slug} y={60}>
-                <WorkCard study={study} theme="dark" imageClassName="h-[454px] max-lg:h-auto max-lg:aspect-[4/3]" />
+                <WorkCard study={study} theme="dark" imageClassName="aspect-[4/3]" />
               </Reveal>
             ) : null;
           })}
@@ -431,7 +443,7 @@ function WhyUs() {
 /* -------------------------------------------------------- Testimonials */
 
 function Testimonials() {
-  const items = [testimonials.gkTraining, testimonials.contraLandingPage, testimonials.contraDeveloper];
+  const items = featuredTestimonials;
   return (
     <section className="mt-40 overflow-x-clip bg-ink py-20 max-lg:mt-24 max-lg:py-16">
       <Container>
@@ -454,8 +466,8 @@ export default function Index() {
     <main className="overflow-x-clip">
       <Hero />
 
-      <div className="relative z-10 h-[268px] max-lg:h-[220px]">
-        <img src={img("27e4e.svg")} alt="" aria-hidden className="absolute inset-x-0 top-[78.5px] h-[201.5px] w-full" />
+      <div className="relative z-10 h-[268px] max-lg:h-[170px]">
+        <img src={img("27e4e.svg")} alt="" aria-hidden className="absolute inset-x-0 top-[78.5px] h-[201.5px] w-full max-lg:hidden" />
         <CrossRibbons />
       </div>
 

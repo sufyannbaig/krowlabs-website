@@ -69,14 +69,13 @@ export default function UiUxDesign() {
       </section>
 
       <TestimonialsBlock
-          dark
-          className="bg-white text-ink"
+          className="mt-20 bg-ink text-white"
           heading={
             <>
-              What <span className="text-[rgba(1,1,1,0.6)]">clients</span> say
+              What <span className="text-white/60">clients</span> say
             </>
           }
-          items={[testimonials.contraDeveloper, testimonials.gkTraining]}
+          items={[testimonials.benProduct, testimonials.benAds, testimonials.misk, testimonials.gkTraining]}
         />
 
       <EngagementBlock

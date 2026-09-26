@@ -12,7 +12,7 @@ const services = [
     title: "CRO & Conversion-Focused Design",
     text: "Full audits of your sales pages, product pages, and checkout flow, with a prioritized fix list ranked by expected impact.",
     href: "/services/cro",
-    image: "/work/zaffo-coffee/cover.webp",
+    image: "/work/optiwrite/cover.webp",
   },
   {
     title: "Website Development",

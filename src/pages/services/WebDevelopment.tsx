@@ -66,7 +66,7 @@ export default function WebDevelopment() {
               What clients<span className="text-white/60"> say</span>
             </>
           }
-          items={[testimonials.contraDeveloper, testimonials.gkTraining]}
+          items={[testimonials.misk, testimonials.chander, testimonials.deborah, testimonials.gkTraining]}
         />
 
       <Container className="mt-[161px] max-lg:mt-24">

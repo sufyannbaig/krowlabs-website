@@ -67,7 +67,7 @@ export default function DigitalAdvertising() {
             What <span className="accent">clients</span> say
           </>
         }
-        items={[testimonials.gkTraining, testimonials.contraLandingPage]}
+        items={[testimonials.prospectBase, testimonials.gkEvent, testimonials.benAds, testimonials.gkTraining]}
       />
 
       <EngagementBlock

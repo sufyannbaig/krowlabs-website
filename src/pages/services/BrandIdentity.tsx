@@ -41,8 +41,8 @@ export default function BrandIdentity() {
       />
 
       {/* 51px gap where other service pages show the trust bar */}
-      <div className="relative z-10 mt-[51px] h-[196px] max-lg:mt-4">
-        <img src={img("73b39.svg")} alt="" aria-hidden className="absolute inset-x-0 top-[82px] h-[159px] w-full" />
+      <div className="relative z-10 mt-[51px] h-[196px] max-lg:mt-4 max-lg:h-[170px]">
+        <img src={img("73b39.svg")} alt="" aria-hidden className="absolute inset-x-0 top-[82px] h-[159px] w-full max-lg:hidden" />
         <CrossRibbons offset={10} />
       </div>
 
@@ -82,7 +82,7 @@ export default function BrandIdentity() {
               What <span className="text-white/60">clients</span> say
             </>
           }
-          items={[testimonials.gkTraining, testimonials.contraDeveloper]}
+          items={[testimonials.efogi, testimonials.iskender, testimonials.deborah, testimonials.benProduct]}
         />
 
       <EngagementBlock

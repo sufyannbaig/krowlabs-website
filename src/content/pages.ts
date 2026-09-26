@@ -10,7 +10,7 @@ import { workMedia } from "./workMedia";
 export type PageMeta = { title: string; description: string; image?: string };
 
 // 1200×630 JPEG share images (LinkedIn does not reliably preview WebP), generated next to each cover.
-const DEFAULT_IMAGE = "/work/zaffo-coffee/og.jpg";
+const DEFAULT_IMAGE = "/work/b2b-saas-website/og.jpg";
 
 export const staticPages: Record<string, PageMeta> = {
   "/": {

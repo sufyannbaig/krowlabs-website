@@ -8,7 +8,7 @@ import { TestimonialTicker } from "@/components/sections/TestimonialTicker";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { auditFormEndpoint, bookingUrl } from "@/content/site";
-import { provenResults, testimonials } from "@/content/testimonials";
+import { featuredTestimonials, provenResults } from "@/content/testimonials";
 import { track } from "@/lib/analytics";
 import { staticPages } from "@/content/pages";
 import { useSeo } from "@/lib/seo";
@@ -185,7 +185,7 @@ export default function FreeAudit() {
             What <span className="font-normal text-white/60">clients</span> say
           </h2>
         </Container>
-        <TestimonialTicker items={[testimonials.gkTraining, testimonials.contraLandingPage, testimonials.contraDeveloper]} />
+        <TestimonialTicker items={featuredTestimonials} />
       </section>
 
       <Footer className="mt-0" />

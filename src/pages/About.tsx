@@ -8,15 +8,15 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { caseStudies } from "@/content/caseStudies";
 import { socials } from "@/content/site";
-import { testimonials } from "@/content/testimonials";
+import { featuredTestimonials } from "@/content/testimonials";
 import { staticPages } from "@/content/pages";
 import { useSeo } from "@/lib/seo";
 
 // Facts from the Upwork and Contra profiles. Update the numbers here as they grow.
 const stats = [
   { value: "5+", label: "Years designing for ecommerce and SaaS brands" },
-  { value: "33", label: "Projects completed on Upwork" },
-  { value: "Top Rated", label: "Upwork status, earned on client feedback" },
+  { value: "96%", label: "Job Success Score across 25 Upwork contracts" },
+  { value: "5.0★", label: "Average client rating, Top Rated on Upwork" },
   { value: String(caseStudies.length), label: "Case studies across all five disciplines" },
 ];
 
@@ -39,7 +39,7 @@ const principles = [
   },
 ];
 
-const experience = ["Krow Labs · Creative Director", "Teqnite · Sr. Graphic & UI Designer", "Tier75 · Graphic Designer", "Gexton · Graphic Designer"];
+const experience = ["Krow Labs · Creative Director", "Teqnite · Sr. Graphic & UI Designer", "Gexton · Graphic Designer"];
 
 export default function About() {
   useSeo(staticPages["/about"]);
@@ -101,8 +101,9 @@ export default function About() {
                 every decision.
               </p>
               <p>
-                Before Krow Labs he designed for studios including Teqnite, Tier75 and Gexton. Today he works with founders
-                and growth teams from DTC stores on Shopify to SaaS platforms and AI startups.
+                Before Krow Labs he designed for studios including Teqnite and Gexton. Today he works with founders
+                and growth teams from DTC stores on Shopify to SaaS platforms and AI startups, and holds the Google UX
+                Design Professional Certificate.
               </p>
             </Reveal>
             <Reveal delay={0.2}>
@@ -160,7 +161,7 @@ export default function About() {
             See our work
           </Button>
         </Container>
-        <TestimonialTicker items={[testimonials.gkTraining, testimonials.contraLandingPage, testimonials.contraDeveloper]} />
+        <TestimonialTicker items={featuredTestimonials} />
       </section>
 
       <CtaBanner

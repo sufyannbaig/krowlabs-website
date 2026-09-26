@@ -19,7 +19,7 @@ export function resultCards(slugs: string[]): ResultCardProps[] {
           <Media
             item={mediaFor(c.slug).cover}
             alt={c.title}
-            className="h-[244px] w-full transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+            className="aspect-[4/3] w-full transition-transform duration-700 ease-out group-hover:scale-[1.03]"
           />
         ),
       },
