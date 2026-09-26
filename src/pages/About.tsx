@@ -45,7 +45,8 @@ const founderLinks = [
 ];
 const founderCallUrl = "https://cal.com/sufyanbaig/15min";
 
-const experience = ["Krow Labs · Creative Director", "Teqnite · Sr. Graphic & UI Designer", "Gexton · Graphic Designer"];
+/** Credentials shown as chips under the founder bio. */
+const credentials = ["Google UX Design Certified", "CRO & persuasive design training", "5+ years in brand & product design"];
 
 export default function About() {
   useSeo(staticPages["/about"]);
@@ -101,20 +102,18 @@ export default function About() {
             </Reveal>
             <Reveal delay={0.1} className="flex flex-col gap-4 text-[18px] leading-[1.55] text-ink/70 max-lg:text-[16px]">
               <p>
-                Sufyan is a UX/UI and brand designer for SaaS and ecommerce teams, based in Hyderabad, Pakistan. He started
-                Krow Labs to give growing brands one creative partner who can handle brand identity, product design,
+                Sufyan is a UX/UI and brand designer for SaaS and ecommerce teams. He started Krow Labs to give growing brands one creative partner who can handle brand identity, product design,
                 conversion-focused landing pages, ad creative and development, and explain the business reasoning behind
                 every decision.
               </p>
               <p>
-                Before Krow Labs he designed for studios including Teqnite and Gexton. Today he works with founders
-                and growth teams from DTC stores on Shopify to SaaS platforms and AI startups, and holds the Google UX
-                Design Professional Certificate.
+                Today he works with founders and growth teams across DTC stores on Shopify, SaaS platforms and AI
+                startups, leading every project himself from the first audit to the final handoff.
               </p>
             </Reveal>
             <Reveal delay={0.2}>
               <ul className="flex flex-wrap gap-2">
-                {experience.map((e) => (
+                {credentials.map((e) => (
                   <li key={e} className="border border-ink/15 px-3 py-1.5 text-[14px] text-ink/70">
                     {e}
                   </li>
@@ -122,7 +121,7 @@ export default function About() {
               </ul>
             </Reveal>
             <Reveal delay={0.3} className="flex flex-wrap items-center gap-4">
-              <Button variant="brand" size="md" href={founderCallUrl}>
+              <Button variant="brand" size="md" href={founderCallUrl} className="max-lg:w-full">
                 Talk 1:1 with Sufyan
               </Button>
               {founderLinks.map((s) => (
