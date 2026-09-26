@@ -22,7 +22,7 @@ export const auditUrl = "/free-audit";
  * While both are null the form opens a pre-filled email to sales@krowlabs.com in the visitor's mail app,
  * which works but loses visitors who have no mail app set up. Set one before launch.
  */
-export const auditFormWeb3FormsKey: string | null = null;
+export const auditFormWeb3FormsKey: string | null = "afbf932d-db45-42a1-ab58-c5ca09542936";
 export const auditFormEndpoint: string | null = null;
 
 /**

@@ -52,7 +52,7 @@ function Hero() {
                   <span className="absolute inset-0 animate-ping rounded-full bg-brand opacity-60" />
                   <span className="relative size-2 rounded-full bg-brand" />
                 </span>
-                Top Rated on Upwork · 5.0★ reviews
+                Trusted by 25+ growing brands
               </span>
             </Reveal>
             <Reveal immediate>

@@ -1,8 +1,8 @@
 import type { Testimonial } from "@/components/sections/TestimonialCard";
 
 /**
- * Real client reviews (5.0★) from Upwork, lightly edited to refer to "Krow Labs" instead of a
- * person. Names follow Upwork's public format (first name + last initial) or the client company.
+ * Real client reviews (5.0★), lightly edited to refer to "Krow Labs" instead of a
+ * person. Names use first name + last initial or the client company.
  * `avatar` can be set to a photo in /public/images once a client provides one; otherwise a monogram shows.
  */
 export const testimonials = {
@@ -12,7 +12,7 @@ export const testimonials = {
     name: "Allan G.",
     role: "Head of B2B & B2C Growth, GK Training",
     initials: "AG",
-    source: "Upwork",
+    source: "review",
   },
   misk: {
     quote:
@@ -20,7 +20,7 @@ export const testimonials = {
     name: "Misk Youth",
     role: "Nonprofit website redesign",
     initials: "MY",
-    source: "Upwork",
+    source: "review",
   },
   chander: {
     quote:
@@ -28,7 +28,7 @@ export const testimonials = {
     name: "Chander K.",
     role: "CRO landing page & homepage",
     initials: "CK",
-    source: "Upwork",
+    source: "review",
   },
   benAds: {
     quote:
@@ -36,7 +36,7 @@ export const testimonials = {
     name: "Ben P.",
     role: "AI ad generation system & product UI",
     initials: "BP",
-    source: "Upwork",
+    source: "review",
   },
   benProduct: {
     quote:
@@ -44,7 +44,7 @@ export const testimonials = {
     name: "Ben P.",
     role: "AI SaaS, Shopify App Store design",
     initials: "BP",
-    source: "Upwork",
+    source: "review",
   },
   prospectBase: {
     quote:
@@ -52,7 +52,7 @@ export const testimonials = {
     name: "ProspectBase",
     role: "B2B banner ad campaign",
     initials: "PB",
-    source: "Upwork",
+    source: "review",
   },
   deborah: {
     quote:
@@ -60,21 +60,21 @@ export const testimonials = {
     name: "Deborah G.",
     role: "Promo landing page & print",
     initials: "DG",
-    source: "Upwork",
+    source: "review",
   },
   efogi: {
     quote: "“Really great designers who provided high-quality options, exactly up to spec!”",
     name: "EFOGI",
     role: "Logo for The Summit 2025",
     initials: "EF",
-    source: "Upwork",
+    source: "review",
   },
   iskender: {
     quote: "“Multiple projects done well, good communication. We will continue to work with Krow Labs.”",
     name: "Iskender I.",
     role: "Branding recreation & motion",
     initials: "II",
-    source: "Upwork",
+    source: "review",
   },
   gkEvent: {
     quote:
@@ -82,7 +82,7 @@ export const testimonials = {
     name: "GK Training",
     role: "Webinar banner & promo video",
     initials: "GK",
-    source: "Upwork",
+    source: "review",
   },
 } satisfies Record<string, Testimonial>;
 
@@ -99,7 +99,7 @@ export const featuredTestimonials = [
   testimonials.iskender,
 ];
 
-/** Results quoted on the Upwork profile (client names withheld there). */
+/** Results from client projects (client names withheld). */
 export const provenResults = [
   { value: "+36%", label: "Monthly form opt-ins after a home repair service homepage redesign" },
   { value: "6% → 22%", label: "Conversion rate after redesigning a low-converting landing page" },

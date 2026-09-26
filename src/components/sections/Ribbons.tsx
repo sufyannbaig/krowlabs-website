@@ -82,6 +82,14 @@ export function CrossRibbons({ offset = 0, className }: { offset?: number; class
       <motion.div className="absolute inset-0" style={reduce ? undefined : { rotate: darkRotate, x: darkX }}>
         <div className={place} style={left}>
           <Band items={darkItems} direction="left" color="bg-ink" tilt={desktop ? -4.45 : -6} />
+          {/* desktop: dark fill under the band so no light sliver shows between it and the dark section below */}
+          {desktop && (
+            <div
+              aria-hidden
+              className="absolute inset-x-0 top-[calc(100%-2px)] h-[56px] bg-ink"
+              style={{ rotate: "-4.45deg", transformOrigin: "50% -39px" }}
+            />
+          )}
         </div>
       </motion.div>
       <motion.div className="absolute inset-0" style={reduce ? undefined : { rotate: orangeRotate, x: orangeX }}>

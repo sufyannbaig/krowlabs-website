@@ -7,7 +7,7 @@ export type Testimonial = {
   /** Photo in /public/images; when missing a monogram avatar is shown. */
   avatar?: string;
   initials?: string;
-  /** Where the review was left, e.g. "Upwork". Shown under the name next to a verified tick. */
+  /** Where the review was left (kept for our records, not shown on the site). */
   source?: string;
 };
 
@@ -106,7 +106,7 @@ export function TestimonialCard({ quote, name, role, avatar, initials, source, d
               <p className={cn("text-[14px]", dark ? "text-white/[0.7]" : "text-ink/[0.6]")}>{role}</p>
               {source && (
                 <p className={cn("mt-0.5 text-[12px] font-medium tracking-[0.2px]", dark ? "text-white/[0.5]" : "text-[#14a800]")}>
-                  Verified {source} client
+                  Verified client
                 </p>
               )}
             </div>

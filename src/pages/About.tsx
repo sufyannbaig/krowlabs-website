@@ -7,16 +7,15 @@ import { TestimonialTicker } from "@/components/sections/TestimonialTicker";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { caseStudies } from "@/content/caseStudies";
-import { socials } from "@/content/site";
 import { featuredTestimonials } from "@/content/testimonials";
 import { staticPages } from "@/content/pages";
 import { useSeo } from "@/lib/seo";
 
-// Facts from the Upwork and Contra profiles. Update the numbers here as they grow.
+// Update the numbers here as they grow.
 const stats = [
   { value: "5+", label: "Years designing for ecommerce and SaaS brands" },
-  { value: "96%", label: "Job Success Score across 25 Upwork contracts" },
-  { value: "5.0★", label: "Average client rating, Top Rated on Upwork" },
+  { value: "25+", label: "Projects shipped for growing brands worldwide" },
+  { value: "5", label: "Services under one roof, from brand to build" },
   { value: String(caseStudies.length), label: "Case studies across all five disciplines" },
 ];
 
@@ -38,6 +37,13 @@ const principles = [
     text: "No account-manager layer. The people you talk to are the people designing and building your work.",
   },
 ];
+
+/** Sufyan's own profiles (the company profiles live in the footer). */
+const founderLinks = [
+  { label: "LinkedIn", url: "https://www.linkedin.com/in/sufyanbaig/" },
+  { label: "Behance", url: "https://www.behance.net/sufyannbaig" },
+];
+const founderCallUrl = "https://cal.com/sufyanbaig/15min";
 
 const experience = ["Krow Labs · Creative Director", "Teqnite · Sr. Graphic & UI Designer", "Gexton · Graphic Designer"];
 
@@ -116,16 +122,20 @@ export default function About() {
               </ul>
             </Reveal>
             <Reveal delay={0.3} className="flex flex-wrap items-center gap-4">
-              <Button variant="brand" size="md">
-                Book a Free Strategy Call
+              <Button variant="brand" size="md" href={founderCallUrl}>
+                Talk 1:1 with Sufyan
               </Button>
-              {socials
-                .filter((s) => s.url)
-                .map((s) => (
-                  <a key={s.label} href={s.url!} target="_blank" rel="noreferrer" className="text-[16px] text-ink/60 underline-offset-4 hover:text-ink hover:underline">
-                    {s.label}
-                  </a>
-                ))}
+              {founderLinks.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 text-[16px] text-ink/60 underline-offset-4 hover:text-ink hover:underline"
+                >
+                  {s.label} <span aria-hidden>↗</span>
+                </a>
+              ))}
             </Reveal>
           </div>
         </Container>
