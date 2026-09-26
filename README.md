@@ -48,7 +48,7 @@ To add a case study: add its images to `public/work/<slug>/` (`cover.webp`, `01.
 
 `npm run build` writes one HTML file per route with its own title, description, canonical URL, Open Graph /
 Twitter tags and JSON-LD, plus `sitemap.xml`, `robots.txt` and `404.html` (see the `seoPages` plugin in
-`vite.config.ts`). Share images are 1200×630 JPEGs (`og.jpg` next to each case study cover).
+`vite.config.ts`). Share images are branded 1200×630 JPEGs in `public/og/` (one per page and case study).
 Set `siteUrl` in `site.ts` if the domain is not `https://krowlabs.com`.
 
 ## Analytics & lead capture

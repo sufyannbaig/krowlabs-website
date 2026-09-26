@@ -5,12 +5,11 @@
  */
 import { caseStudies } from "./caseStudies";
 import { siteUrl } from "./site";
-import { workMedia } from "./workMedia";
 
 export type PageMeta = { title: string; description: string; image?: string };
 
-// 1200×630 JPEG share images (LinkedIn does not reliably preview WebP), generated next to each cover.
-const DEFAULT_IMAGE = "/work/b2b-saas-website/og.jpg";
+// Branded 1200×630 JPEG share images in public/og/ (LinkedIn does not reliably preview WebP).
+const DEFAULT_IMAGE = "/og/home.jpg";
 
 export const staticPages: Record<string, PageMeta> = {
   "/": {
@@ -22,58 +21,59 @@ export const staticPages: Record<string, PageMeta> = {
     title: "Work",
     description:
       "Selected Krow Labs case studies: CRO, website development, UI/UX, brand identity and ad creative for ecommerce, SaaS and service brands.",
+    image: "/og/work.jpg",
   },
   "/about": {
     title: "About",
     description:
       "Krow Labs is a conversion-focused design studio led by Sufyan Baig: brand, UI/UX, landing pages, ad creative and development for growing ecommerce and SaaS brands.",
-    image: "/images/team/og.jpg",
+    image: "/og/about.jpg",
   },
   "/free-audit": {
     title: "Free Conversion Audit",
     description:
       "Send us your website and get the biggest conversion leaks on your key page, ranked by impact with concrete fixes. Free, by email, no call required.",
+    image: "/og/free-audit.jpg",
   },
   "/services/cro": {
     title: "CRO & Conversion-Focused Design",
     description:
       "A full audit of your site or app plus a prioritized fix list ranked by revenue impact. Conversion rate optimization for ecommerce, SaaS and service brands.",
-    image: "/work/zaffo-coffee/og.jpg",
+    image: "/og/cro.jpg",
   },
   "/services/web-development": {
     title: "Website Development",
     description:
       "Landing pages and full marketing sites built fast with an AI-assisted workflow and reviewed by a senior designer at every step. Framer, Webflow, Shopify or your stack.",
-    image: "/work/b2b-saas-website/og.jpg",
+    image: "/og/web-development.jpg",
   },
   "/services/ui-ux-design": {
     title: "UI/UX Design",
     description:
       "Product design for SaaS platforms and mobile apps, from first wireframe to a design system your team can keep building on.",
-    image: "/work/revsta-platform/og.jpg",
+    image: "/og/ui-ux-design.jpg",
   },
   "/services/brand-identity": {
     title: "Brand Identity",
     description:
       "Logo, visual identity and brand guidelines that hold up everywhere your brand shows up, from product UI to packaging, menus and signage.",
-    image: "/work/korax/og.jpg",
+    image: "/og/brand-identity.jpg",
   },
   "/services/digital-advertising": {
     title: "Digital Advertising & Creative",
     description:
       "Static ad creative for Google Ads and paid social, designed to match the landing page it sends traffic to.",
-    image: "/work/kryve/og.jpg",
+    image: "/og/digital-advertising.jpg",
   },
 };
 
 export function caseStudyMeta(slug: string): PageMeta | undefined {
   const c = caseStudies.find((s) => s.slug === slug);
   if (!c) return undefined;
-  const cover = workMedia[slug]?.cover;
   return {
     title: `${c.client} case study`,
     description: c.summary,
-    image: cover?.type === "image" ? `/work/${slug}/og.jpg` : undefined,
+    image: `/og/work-${slug}.jpg`,
   };
 }
 
