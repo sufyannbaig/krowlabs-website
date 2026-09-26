@@ -47,8 +47,11 @@ To add a case study: add its images to `public/work/<slug>/` (`cover.webp`, `01.
 ## SEO
 
 `npm run build` writes one HTML file per route with its own title, description, canonical URL, Open Graph /
-Twitter tags and JSON-LD, plus `sitemap.xml`, `robots.txt` and `404.html` (see the `seoPages` plugin in
-`vite.config.ts`). Share images are branded 1200×630 JPEGs in `public/og/` (one per page and case study).
+Twitter tags, JSON-LD and the **fully prerendered page content** (`src/entry-server.tsx`), so crawlers that do not
+run JavaScript (ChatGPT, Claude, Perplexity, link previews) see the whole page. The browser app then hydrates that
+HTML. It also writes `sitemap.xml`, `robots.txt`, `llms.txt` (an AI-readable summary, from `src/content/llms.ts`)
+and `404.html` (see the `seoPages` plugin in `vite.config.ts`). If prerendering ever fails, the build still
+succeeds and pages ship without body HTML, as before. Share images are branded 1200×630 JPEGs in `public/og/` (one per page and case study).
 Set `siteUrl` in `site.ts` if the domain is not `https://krowlabs.com`.
 
 ## Analytics & lead capture

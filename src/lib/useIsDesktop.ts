@@ -1,17 +1,22 @@
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 export const DESKTOP = "(min-width: 1024px)";
 
-/** True on the desktop layout (≥1024px), where scroll-pinned and cursor effects run. */
+const subscribe = (onChange: () => void) => {
+  const mq = window.matchMedia(DESKTOP);
+  mq.addEventListener("change", onChange);
+  return () => mq.removeEventListener("change", onChange);
+};
+
+/**
+ * True on the desktop layout (≥1024px), where scroll-pinned and cursor effects run.
+ * Prerendered HTML is built as desktop (the server snapshot), so hydration matches and then
+ * React switches to the real value straight after.
+ */
 export function useIsDesktop() {
-  const [desktop, setDesktop] = useState(() =>
-    typeof window === "undefined" ? true : window.matchMedia(DESKTOP).matches,
+  return useSyncExternalStore(
+    subscribe,
+    () => window.matchMedia(DESKTOP).matches,
+    () => true,
   );
-  useEffect(() => {
-    const mq = window.matchMedia(DESKTOP);
-    const on = () => setDesktop(mq.matches);
-    mq.addEventListener("change", on);
-    return () => mq.removeEventListener("change", on);
-  }, []);
-  return desktop;
 }

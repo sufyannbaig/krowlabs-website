@@ -26,9 +26,10 @@ function ScrollToTop() {
   return null;
 }
 
-export default function App() {
+/** Everything inside the router. Also rendered at build time (src/entry-server.tsx) to prerender each page. */
+export function AppRoutes() {
   return (
-    <BrowserRouter>
+    <>
       <ScrollToTop />
       <DesktopScale>
         <Suspense fallback={<div className="min-h-screen bg-page" />}>
@@ -47,6 +48,14 @@ export default function App() {
         </Routes>
         </Suspense>
       </DesktopScale>
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppRoutes />
     </BrowserRouter>
   );
 }
