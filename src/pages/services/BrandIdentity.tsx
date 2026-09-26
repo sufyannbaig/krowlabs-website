@@ -123,7 +123,7 @@ export default function BrandIdentity() {
             {
               question: "How long does a brand identity project take?",
               answer:
-                "Typically about a month from positioning to final guidelines, depending on how many concept rounds and applications you need. The full Kebabberia Sabri rebrand took around a month.",
+                "Usually 1 to 2 weeks from ideation to final deliverables, depending on how many concept rounds and brand applications you need.",
               align: "end",
             },
             {
