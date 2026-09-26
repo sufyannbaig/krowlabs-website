@@ -4,13 +4,13 @@ import { fileURLToPath, URL } from "node:url";
 import react from "@vitejs/plugin-react";
 import { defineConfig, type Plugin } from "vite";
 import { absoluteUrl, allPages, fullTitle, metaImage, structuredData } from "./src/content/pages";
-import { siteUrl } from "./src/content/site";
+import { llmsTxt, robotsTxt } from "./src/content/llms";
 
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 /**
  * After the build, writes one HTML file per route with its own title, description, canonical URL,
- * Open Graph/Twitter tags and JSON-LD, plus sitemap.xml and robots.txt. The page content is still
+ * Open Graph/Twitter tags and JSON-LD, plus sitemap.xml, robots.txt and llms.txt. The page content is still
  * rendered by React; this makes every route's metadata visible to crawlers and link previews
  * without JavaScript. Page metadata lives in src/content/pages.ts.
  */
@@ -76,7 +76,8 @@ function seoPages(): Plugin {
         join(outDir, "sitemap.xml"),
         `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`,
       );
-      writeFileSync(join(outDir, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${siteUrl}/sitemap.xml\n`);
+      writeFileSync(join(outDir, "robots.txt"), robotsTxt());
+      writeFileSync(join(outDir, "llms.txt"), llmsTxt());
     },
   };
 }

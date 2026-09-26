@@ -20,7 +20,9 @@ export function initAnalytics() {
   if (typeof window === "undefined") return;
   const w = window as Win;
 
-  if (analytics.ga4Id) {
+  // The GA4 tag is normally already in index.html <head> (so Google's tag checker finds it);
+  // only inject it here if it is missing, e.g. after changing ga4Id without updating index.html.
+  if (analytics.ga4Id && !w.gtag) {
     addScript(`https://www.googletagmanager.com/gtag/js?id=${analytics.ga4Id}`);
     w.dataLayer = w.dataLayer || [];
     w.gtag = function gtag() {

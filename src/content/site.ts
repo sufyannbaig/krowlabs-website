@@ -30,7 +30,7 @@ export const auditFormEndpoint: string | null = null;
  * Booking-button clicks and audit-form submissions are sent as conversion events.
  */
 export const analytics = {
-  /** Google Analytics 4 measurement ID, e.g. "G-XXXXXXX". */
+  /** Google Analytics 4 measurement ID. The same ID is in the Google tag in index.html <head>; change both together. */
   ga4Id: "G-HNYTM5F8NL" as string | null,
   /** Plausible domain, e.g. "krowlabs.com". */
   plausibleDomain: null as string | null,
