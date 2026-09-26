@@ -106,7 +106,7 @@ export function structuredData(path: string, meta: PageMeta) {
     "@type": "Organization",
     name: SITE_NAME,
     url: siteUrl,
-    logo: absoluteUrl("/favicon.svg"),
+    logo: absoluteUrl("/icon-512.png"),
     email: "sales@krowlabs.com",
     founder: { "@type": "Person", name: "Sufyan Baig", jobTitle: "Founder & Creative Director" },
     sameAs: [

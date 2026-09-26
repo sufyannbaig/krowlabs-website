@@ -55,8 +55,17 @@ Set `siteUrl` in `site.ts` if the domain is not `https://krowlabs.com`.
 
 Fill in `analytics` in `site.ts` (GA4, Plausible and/or Microsoft Clarity) and the scripts load automatically.
 Booking-button clicks (`book_call_click`) and audit requests (`audit_request`) are sent as events.
-The free-audit form posts JSON to `auditFormEndpoint`; until that is set it opens a pre-filled email to
-sales@krowlabs.com so no request is lost.
+Free-audit requests are delivered by email once `auditFormWeb3FormsKey` (free key from web3forms.com, sent to
+sales@krowlabs.com) or `auditFormEndpoint` (Formspree, webhook or edge function) is set in `site.ts`. Until then the
+form opens a pre-filled email to sales@krowlabs.com in the visitor's own mail app.
+
+## Launch checklist
+
+1. Set `auditFormWeb3FormsKey` (or `auditFormEndpoint`) in `site.ts` and send a test request.
+2. Make sure the sales@ and hr@krowlabs.com inboxes exist and receive mail.
+3. Add at least one analytics ID in `site.ts` (Clarity is free and shows heatmaps).
+4. Connect krowlabs.com (and www) to the host, with HTTPS on and www redirecting to the bare domain.
+5. Submit `https://krowlabs.com/sitemap.xml` in Google Search Console.
 
 ## Layout & responsiveness
 

@@ -12,10 +12,17 @@ export const bookingUrl = "https://cal.com/krowlabs/discovery";
 export const auditUrl = "/free-audit";
 
 /**
- * Where the free-audit form is sent. Paste an endpoint that accepts a JSON POST
- * (Formspree, Web3Forms, a Zapier/Make webhook, or a Lovable/Supabase edge function).
- * While this is null the form opens a pre-filled email to sales@krowlabs.com instead, so no lead is lost.
+ * Where free-audit requests go. Set ONE of these (the first one set wins):
+ *
+ * 1. `auditFormWeb3FormsKey`: easiest. Get a free access key at https://web3forms.com by entering
+ *    sales@krowlabs.com; every request then arrives in that inbox as an email. The key is safe to publish.
+ * 2. `auditFormEndpoint`: any URL that accepts a JSON POST (Formspree "https://formspree.io/f/xxxx",
+ *    a Zapier/Make webhook, or a Lovable/Supabase edge function).
+ *
+ * While both are null the form opens a pre-filled email to sales@krowlabs.com in the visitor's mail app,
+ * which works but loses visitors who have no mail app set up. Set one before launch.
  */
+export const auditFormWeb3FormsKey: string | null = null;
 export const auditFormEndpoint: string | null = null;
 
 /**

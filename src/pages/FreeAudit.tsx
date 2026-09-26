@@ -7,7 +7,7 @@ import { HeroGrid } from "@/components/sections/HeroBackdrop";
 import { TestimonialTicker } from "@/components/sections/TestimonialTicker";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { auditFormEndpoint, bookingUrl } from "@/content/site";
+import { auditFormEndpoint, auditFormWeb3FormsKey, bookingUrl } from "@/content/site";
 import { featuredTestimonials, provenResults } from "@/content/testimonials";
 import { track } from "@/lib/analytics";
 import { staticPages } from "@/content/pages";
@@ -36,7 +36,8 @@ export default function FreeAudit() {
     if (data.company) return; // honeypot: bots fill hidden fields
     track("audit_request", { website: data.website });
 
-    if (!auditFormEndpoint) {
+    const endpoint = auditFormWeb3FormsKey ? "https://api.web3forms.com/submit" : auditFormEndpoint;
+    if (!endpoint) {
       // No form backend configured yet: hand off to the visitor's email app, pre-filled.
       const body = [
         `Name: ${data.name}`,
@@ -55,10 +56,20 @@ export default function FreeAudit() {
 
     setStatus("sending");
     try {
-      const res = await fetch(auditFormEndpoint, {
+      const payload = {
+        ...data,
+        source: "krowlabs.com/free-audit",
+        ...(auditFormWeb3FormsKey && {
+          access_key: auditFormWeb3FormsKey,
+          subject: `Free conversion audit: ${data.website}`,
+          from_name: "Krow Labs website",
+          replyto: data.email,
+        }),
+      };
+      const res = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ ...data, source: "krowlabs.com/free-audit" }),
+        body: JSON.stringify(payload),
       });
       setStatus(res.ok ? "sent" : "error");
     } catch {
