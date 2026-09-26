@@ -8,15 +8,12 @@ import { motion } from "framer-motion";
 import { Reveal } from "@/components/motion/Reveal";
 import { Container } from "@/components/ui/Container";
 import { provenResults, testimonials } from "@/content/testimonials";
+import { staticPages } from "@/content/pages";
 import { useSeo } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 export default function Cro() {
-  useSeo({
-    title: "CRO & Conversion-Focused Design",
-    description:
-      "A full audit of your site or app plus a prioritized fix list ranked by revenue impact. Conversion rate optimization for ecommerce, SaaS and service brands.",
-  });
+  useSeo(staticPages["/services/cro"]);
   return (
     <main className="overflow-x-clip">
       <ServiceHero

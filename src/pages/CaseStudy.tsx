@@ -10,6 +10,7 @@ import { Media } from "@/components/work/Media";
 import { WorkCard } from "@/components/work/WorkCard";
 import { caseStudies, getCaseStudy, mediaFor, statFor } from "@/content/caseStudies";
 import { services } from "@/content/services";
+import { caseStudyMeta } from "@/content/pages";
 import { useSeo } from "@/lib/seo";
 
 export default function CaseStudy() {
@@ -17,11 +18,7 @@ export default function CaseStudy() {
   const study = getCaseStudy(slug);
   const media = mediaFor(slug);
 
-  useSeo({
-    title: study ? `${study.client} case study` : "Case study",
-    description: study?.summary ?? "",
-    image: media.cover?.type === "image" ? media.cover.src : undefined,
-  });
+  useSeo(caseStudyMeta(slug) ?? { title: "Case study", description: "" });
 
   if (!study) return <Navigate to="/work" replace />;
 

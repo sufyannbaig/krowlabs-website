@@ -19,6 +19,8 @@ npm run build
 | `/` | Home |
 | `/work` | All case studies (filterable by service) |
 | `/work/:slug` | Case study (one per project in `src/content/caseStudies.ts`) |
+| `/about` | About Krow Labs and the founder |
+| `/free-audit` | Free conversion audit request form |
 | `/services/cro` | CRO & Conversion-Focused Design |
 | `/services/web-development` | Website Development |
 | `/services/ui-ux-design` | UI/UX Design |
@@ -31,7 +33,8 @@ Everything editable lives in `src/content/`:
 
 | File | What it controls |
 | --- | --- |
-| `site.ts` | **Booking link** for every CTA button, social links, homepage showreel video |
+| `site.ts` | **Booking link**, **audit form endpoint**, **analytics IDs**, site domain, social links, showreel video |
+| `pages.ts` | Title, description and share image for every page (used at runtime and at build time) |
 | `caseStudies.ts` | Case studies: text, client, services, the stat shown on cards (`highlight`, or add a real `metric`) |
 | `workMedia.ts` | Generated list of each case study's images/videos in `public/work/<slug>/` |
 | `testimonials.ts` | Real client testimonials and the proven results on the CRO page |
@@ -40,6 +43,20 @@ Everything editable lives in `src/content/`:
 
 To add a case study: add its images to `public/work/<slug>/` (`cover.webp`, `01.webp`, …), add an entry to
 `workMedia.ts` and `caseStudies.ts`, and reference the slug on a service page via `resultCards([...])`.
+
+## SEO
+
+`npm run build` writes one HTML file per route with its own title, description, canonical URL, Open Graph /
+Twitter tags and JSON-LD, plus `sitemap.xml`, `robots.txt` and `404.html` (see the `seoPages` plugin in
+`vite.config.ts`). Share images are 1200×630 JPEGs (`og.jpg` next to each case study cover).
+Set `siteUrl` in `site.ts` if the domain is not `https://krowlabs.com`.
+
+## Analytics & lead capture
+
+Fill in `analytics` in `site.ts` (GA4, Plausible and/or Microsoft Clarity) and the scripts load automatically.
+Booking-button clicks (`book_call_click`) and audit requests (`audit_request`) are sent as events.
+The free-audit form posts JSON to `auditFormEndpoint`; until that is set it opens a pre-filled email to
+sales@krowlabs.com so no request is lost.
 
 ## Layout & responsiveness
 

@@ -7,15 +7,12 @@ import { EngagementBlock, headingXL, IncludedColumns, ResultsBlock, Testimonials
 import { HeroImage, ServiceHero } from "@/components/sections/ServiceHero";
 import { Container } from "@/components/ui/Container";
 import { testimonials } from "@/content/testimonials";
+import { staticPages } from "@/content/pages";
 import { useSeo } from "@/lib/seo";
 import { cn, img } from "@/lib/utils";
 
 export default function BrandIdentity() {
-  useSeo({
-    title: "Brand Identity",
-    description:
-      "Logo, visual identity and brand guidelines that hold up everywhere your brand shows up, from product UI to packaging, menus and signage.",
-  });
+  useSeo(staticPages["/services/brand-identity"]);
   return (
     <main className="overflow-x-clip">
       <ServiceHero

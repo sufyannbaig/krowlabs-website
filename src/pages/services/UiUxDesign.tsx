@@ -6,17 +6,14 @@ import { FlatRibbon } from "@/components/sections/Ribbons";
 import { EngagementBlock, headingLG, headingXL, ResultsBlock, TestimonialsBlock } from "@/components/sections/ServiceBlocks";
 import { HeroImage, ServiceHero } from "@/components/sections/ServiceHero";
 import { testimonials } from "@/content/testimonials";
+import { staticPages } from "@/content/pages";
 import { useSeo } from "@/lib/seo";
 import { Reveal } from "@/components/motion/Reveal";
 import { cn } from "@/lib/utils";
 import { vibeCodingFaq } from "@/content/faqs";
 
 export default function UiUxDesign() {
-  useSeo({
-    title: "UI/UX Design",
-    description:
-      "Product design for SaaS platforms and mobile apps, from first wireframe to a design system your team can keep building on.",
-  });
+  useSeo(staticPages["/services/ui-ux-design"]);
   return (
     <main className="overflow-x-clip">
       <ServiceHero

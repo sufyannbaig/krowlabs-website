@@ -1,12 +1,13 @@
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useState, type MouseEvent } from "react";
+import { Link } from "react-router-dom";
 import { Reveal } from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/Button";
 import { socials } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 const columns = [
-  { title: "Site", width: "w-[118px]", links: [["Services", "/#services"], ["Work", "/work"], ["About", "/#about"]] },
+  { title: "Site", width: "w-[118px]", links: [["Services", "/#services"], ["Work", "/work"], ["About", "/about"], ["Free audit", "/free-audit"]] },
   { title: "Careers", links: [["hr@krowlabs.com", "mailto:hr@krowlabs.com"]] },
   {
     title: "Connect",
@@ -57,9 +58,19 @@ export function Footer({ className }: { className?: string }) {
               <ul className="flex flex-col gap-3 text-[16px] tracking-[-0.16px] text-black/60">
                 {col.links.map(([label, href]) => (
                   <li key={label} className="whitespace-nowrap">
-                    <a href={href} {...(href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}>
-                      {label}
-                    </a>
+                    {href.startsWith("/") ? (
+                      <Link to={href} className="transition-colors hover:text-brand">
+                        {label}
+                      </Link>
+                    ) : (
+                      <a
+                        href={href}
+                        className="transition-colors hover:text-brand"
+                        {...(href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}
+                      >
+                        {label}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>

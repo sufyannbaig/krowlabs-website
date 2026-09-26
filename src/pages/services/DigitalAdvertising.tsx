@@ -6,15 +6,12 @@ import { EngagementBlock, headingXL, IncludedColumns, ResultsBlock, Testimonials
 import { HeroImage, ServiceHero } from "@/components/sections/ServiceHero";
 import { Container } from "@/components/ui/Container";
 import { testimonials } from "@/content/testimonials";
+import { staticPages } from "@/content/pages";
 import { useSeo } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 export default function DigitalAdvertising() {
-  useSeo({
-    title: "Digital Advertising & Creative",
-    description:
-      "Static ad creative for Google Ads and paid social, designed to match the landing page it sends traffic to.",
-  });
+  useSeo(staticPages["/services/digital-advertising"]);
   return (
     <main className="overflow-x-clip">
       <ServiceHero

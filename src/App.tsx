@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { DesktopScale } from "@/components/layout/DesktopScale";
+import { trackPageView } from "@/lib/analytics";
 import Index from "@/pages/Index";
 
 const CaseStudy = lazy(() => import("@/pages/CaseStudy"));
@@ -10,9 +11,13 @@ const DigitalAdvertising = lazy(() => import("@/pages/services/DigitalAdvertisin
 const UiUxDesign = lazy(() => import("@/pages/services/UiUxDesign"));
 const WebDevelopment = lazy(() => import("@/pages/services/WebDevelopment"));
 const Work = lazy(() => import("@/pages/Work"));
+const About = lazy(() => import("@/pages/About"));
+const FreeAudit = lazy(() => import("@/pages/FreeAudit"));
+const NotFound = lazy(() => import("@/pages/NotFound"));
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
+  useEffect(() => trackPageView(pathname), [pathname]);
   useEffect(() => {
     if (hash) {
       document.querySelector(hash)?.scrollIntoView();
@@ -32,13 +37,15 @@ export default function App() {
         <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/work" element={<Work />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/free-audit" element={<FreeAudit />} />
         <Route path="/work/:slug" element={<CaseStudy />} />
         <Route path="/services/cro" element={<Cro />} />
         <Route path="/services/web-development" element={<WebDevelopment />} />
         <Route path="/services/ui-ux-design" element={<UiUxDesign />} />
         <Route path="/services/brand-identity" element={<BrandIdentity />} />
         <Route path="/services/digital-advertising" element={<DigitalAdvertising />} />
-        <Route path="*" element={<Index />} />
+        <Route path="*" element={<NotFound />} />
         </Routes>
         </Suspense>
       </DesktopScale>

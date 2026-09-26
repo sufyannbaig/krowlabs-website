@@ -5,8 +5,8 @@ import { cn, img } from "@/lib/utils";
 import { useIsDesktop } from "@/lib/useIsDesktop";
 import { enterToCenter, useRectProgress } from "@/lib/useRectProgress";
 
-const darkItems = ["Frammer", "Web Development", "Product Design", "UI/UX Design", "Figma"];
-const orangeItems = ["Web Development", "Frammer", "Product Design", "Figma", "UI/UX Design"];
+const darkItems = ["Framer", "Web Development", "Product Design", "UI/UX Design", "Figma"];
+const orangeItems = ["Web Development", "Framer", "Product Design", "Figma", "UI/UX Design"];
 
 function Tags({ items }: { items: string[] }) {
   return (

@@ -1,4 +1,4 @@
-import { motion, useReducedMotion, useTransform } from "framer-motion";
+import { motion, useInView, useReducedMotion, useTransform } from "framer-motion";
 import { type CSSProperties, type ReactNode, useRef, useState } from "react";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
@@ -16,8 +16,9 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { WorkCard } from "@/components/work/WorkCard";
 import { getCaseStudy } from "@/content/caseStudies";
-import { showreel } from "@/content/site";
+import { auditUrl, showreel } from "@/content/site";
 import { testimonials } from "@/content/testimonials";
+import { staticPages } from "@/content/pages";
 import { useSeo } from "@/lib/seo";
 import { enterToUpperQuarter, useRectProgress } from "@/lib/useRectProgress";
 import { cn, img } from "@/lib/utils";
@@ -62,7 +63,9 @@ function Hero() {
             <Button variant="gradient" raised>
               Book a Free Strategy Call
             </Button>
-            <Button variant="outline">Get a Free Conversion Audit</Button>
+            <Button variant="outline" href={auditUrl}>
+              Get a Free Conversion Audit
+            </Button>
           </Reveal>
         </div>
 
@@ -180,6 +183,8 @@ function Showreel() {
   const [playing, setPlaying] = useState(false);
   const reduce = useReducedMotion();
   const scrollYProgress = useRectProgress(ref, enterToUpperQuarter);
+  // Only fetch the video once the visitor scrolls near it.
+  const near = useInView(ref, { once: true, margin: "600px 0px" });
   // function transforms keep this on the JS path (see ProcessSteps for why)
   const scale = useTransform(scrollYProgress, (v) => 0.82 + 0.18 * v);
   const radius = useTransform(scrollYProgress, (v) => 32 * (1 - v));
@@ -202,7 +207,7 @@ function Showreel() {
         {showreel.video ? (
           <video
             ref={videoRef}
-            src={showreel.video}
+            src={near ? showreel.video : undefined}
             poster={showreel.poster}
             className="absolute inset-0 size-full object-cover"
             playsInline
@@ -444,11 +449,7 @@ function Testimonials() {
 /* ------------------------------------------------------------------ Page */
 
 export default function Index() {
-  useSeo({
-    title: "Krow Labs | Conversion-focused design & development",
-    description:
-      "Krow Labs designs and optimizes the pages your customers actually see: sales pages, product pages, and apps, so they convert more of the traffic you are already paying for.",
-  });
+  useSeo(staticPages["/"]);
   return (
     <main className="overflow-x-clip">
       <Hero />

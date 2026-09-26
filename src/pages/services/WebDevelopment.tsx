@@ -7,15 +7,12 @@ import { HeroImage, ServiceHero } from "@/components/sections/ServiceHero";
 import { Container } from "@/components/ui/Container";
 import { vibeCodingFaq } from "@/content/faqs";
 import { testimonials } from "@/content/testimonials";
+import { staticPages } from "@/content/pages";
 import { useSeo } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 export default function WebDevelopment() {
-  useSeo({
-    title: "Website Development",
-    description:
-      "Landing pages and full marketing sites built fast with an AI-assisted workflow and reviewed by a senior designer at every step. Framer, Webflow, Shopify or your stack.",
-  });
+  useSeo(staticPages["/services/web-development"]);
   return (
     <main className="overflow-x-clip">
       <ServiceHero

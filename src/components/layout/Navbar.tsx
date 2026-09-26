@@ -8,7 +8,7 @@ import { img } from "@/lib/utils";
 const links = [
   { label: "Work", href: "/work" },
   { label: "Services", href: "/#services" },
-  { label: "About", href: "/#about" },
+  { label: "About", href: "/about" },
 ];
 
 const serviceBlurbs: Record<string, string> = {

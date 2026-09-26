@@ -9,6 +9,7 @@ import { Container } from "@/components/ui/Container";
 import { WorkCard } from "@/components/work/WorkCard";
 import { caseStudies } from "@/content/caseStudies";
 import { services, type ServiceKey } from "@/content/services";
+import { staticPages } from "@/content/pages";
 import { useSeo } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
@@ -16,11 +17,7 @@ const filters: (ServiceKey | "all")[] = ["all", "cro", "web-development", "ui-ux
 
 export default function Work() {
   const [active, setActive] = useState<ServiceKey | "all">("all");
-  useSeo({
-    title: "Work",
-    description:
-      "Selected Krow Labs case studies: CRO, website development, UI/UX, brand identity and ad creative for ecommerce, SaaS and service brands.",
-  });
+  useSeo(staticPages["/work"]);
 
   const list = active === "all" ? caseStudies : caseStudies.filter((c) => c.services.includes(active));
 

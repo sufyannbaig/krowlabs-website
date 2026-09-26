@@ -1,6 +1,7 @@
 import type { AnchorHTMLAttributes } from "react";
 import { Link } from "react-router-dom";
 import { bookingUrl } from "@/content/site";
+import { track } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 
 const variants = {
@@ -55,10 +56,12 @@ export function Button({
     );
   }
 
-  // External links (the booking page) open in a new tab.
+  // External links (the booking page) open in a new tab; booking clicks are tracked as conversions.
   const external = href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {};
+  const onBook =
+    href === bookingUrl ? () => track("book_call_click", { label: String(children), page: window.location.pathname }) : undefined;
   return (
-    <a href={href} className={classes} {...external} {...props}>
+    <a href={href} className={classes} {...external} {...props} onClick={(e) => { onBook?.(); props.onClick?.(e); }}>
       {children}
     </a>
   );
