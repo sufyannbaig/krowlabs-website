@@ -10,10 +10,10 @@ export const bookingUrl = "#contact";
 
 /** Social profiles. Links left as null are hidden until a URL is added. */
 export const socials: { label: string; url: string | null }[] = [
-  { label: "LinkedIn", url: "https://www.linkedin.com/in/sufyanbaig/" },
-  { label: "Instagram", url: null },
-  { label: "Behance", url: "https://www.behance.net/sufyannbaig" },
-  { label: "Dribbble", url: null },
+  { label: "LinkedIn", url: "https://www.linkedin.com/company/krow-labs/" },
+  { label: "Instagram", url: "https://www.instagram.com/krow_labs/" },
+  { label: "Behance", url: "https://www.behance.net/krowlabs" },
+  { label: "Dribbble", url: "https://dribbble.com/krowlabs" },
 ];
 
 /**
@@ -21,6 +21,6 @@ export const socials: { label: string; url: string | null }[] = [
  * Until then the poster image is shown with the play button.
  */
 export const showreel = {
-  video: null as string | null,
-  poster: "/images/7eefb.jpg",
+  video: "/video/showreel.mp4" as string | null,
+  poster: "/video/showreel-poster.jpg",
 };

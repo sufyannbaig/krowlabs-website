@@ -100,8 +100,19 @@ export default function DigitalAdvertising() {
               answer:
                 "We design the creative. We work alongside your media buyer or agency, matching what they need for the platforms you are running on.",
             },
-            { question: "Do you do video ads?", align: "end" },
-            { question: "Ready for ad creative that actually converts?", align: "end", questionWidth: 504 },
+            {
+              question: "Do you do video ads?",
+              answer:
+                "Yes. Alongside static creative we produce short-form video, motion graphics and AI-generated video ads. We will recommend the right mix of formats for your platforms on the strategy call.",
+              align: "end",
+            },
+            {
+              question: "Ready for ad creative that actually converts?",
+              answer:
+                "Book a free strategy call. We will look at your current ads and landing pages together and show you where new creative is most likely to move your numbers.",
+              align: "end",
+              questionWidth: 504,
+            },
           ]}
         />
       </Container>

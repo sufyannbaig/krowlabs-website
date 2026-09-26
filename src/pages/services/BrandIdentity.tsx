@@ -120,8 +120,19 @@ export default function BrandIdentity() {
               answer:
                 "Not always. We can evolve what exists instead of starting over, once we see whether the current identity is holding the brand back.",
             },
-            { question: "How long does a brand identity project take?", align: "end" },
-            { question: "Do you handle print production for packaging and signage?", align: "end", questionWidth: 504 },
+            {
+              question: "How long does a brand identity project take?",
+              answer:
+                "Typically about a month from positioning to final guidelines, depending on how many concept rounds and applications you need. The full Kebabberia Sabri rebrand took around a month.",
+              align: "end",
+            },
+            {
+              question: "Do you handle print production for packaging and signage?",
+              answer:
+                "We design everything print-ready (packaging, menus, signage and more) with the right dielines, bleed and color specs, and we can coordinate directly with your printer. The printing itself is done by your print partner.",
+              align: "end",
+              questionWidth: 504,
+            },
           ]}
         />
       </Container>

@@ -9,6 +9,8 @@ export const vibeCodingFaq: FaqItem[] = [
   },
   {
     question: "Can you work with our existing brand, or do we need new branding first?",
+    answer:
+      "We can build on your existing brand. If the work shows your identity is holding the product or site back we will tell you, and we can refresh it, but new branding is never a requirement to start.",
     align: "start",
   },
 ];

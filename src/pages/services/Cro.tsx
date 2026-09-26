@@ -122,7 +122,12 @@ export default function Cro() {
               answer:
                 "A written report plus a walkthrough call, with every finding ranked so you know what to fix first.",
             },
-            { question: "Do you also fix what you find?", align: "end" },
+            {
+              question: "Do you also fix what you find?",
+              answer:
+                "Yes. We can design and build the top fixes as a follow-on engagement, then A/B test them against real traffic. You can also hand the report to your own team if you prefer.",
+              align: "end",
+            },
           ]}
         />
       </Container>

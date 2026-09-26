@@ -186,6 +186,7 @@ function Showreel() {
 
   const play = () => {
     if (!videoRef.current) return;
+    videoRef.current.currentTime = 0;
     videoRef.current.muted = false;
     videoRef.current.controls = true;
     void videoRef.current.play();
@@ -221,7 +222,7 @@ function Showreel() {
             disabled={!showreel.video}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            className="absolute left-1/2 top-1/2 -ml-[46px] -mt-[46px] flex items-center justify-end overflow-hidden rounded-[66.621px] bg-white/75 px-[31.724px] py-[30.138px] backdrop-blur-sm disabled:cursor-default max-lg:scale-75"
+            className="absolute bottom-10 right-10 flex items-center justify-end overflow-hidden rounded-[66.621px] bg-white/75 px-[31.724px] py-[30.138px] backdrop-blur-sm disabled:cursor-default max-lg:bottom-3 max-lg:right-3 max-lg:origin-bottom-right max-lg:scale-[0.6]"
           >
             <img src={img("cb757.svg")} alt="" className="h-[31.724px] w-[28.552px]" />
           </motion.button>
@@ -478,10 +479,23 @@ export default function Index() {
               answer:
                 "$449-$2499. Book a free strategy call and we will scope it against your goals before anything is billed.",
             },
-            { question: "How fast can we start?", align: "end" },
-            { question: "Do you work with SaaS or ecommerce?", align: "end", questionWidth: 504 },
+            {
+              question: "How fast can we start?",
+              answer:
+                "Usually within a week. After the free strategy call we send a scoped plan and price, and once you approve it we book your start date and the audit begins.",
+              align: "end",
+            },
+            {
+              question: "Do you work with SaaS or ecommerce?",
+              answer:
+                "Both. Most of our work is for DTC ecommerce brands (including Shopify stores) and B2B or B2C SaaS teams, plus service businesses that rely on their website for leads.",
+              align: "end",
+              questionWidth: 504,
+            },
             {
               question: "Do I need a full redesign, or can you just fix what is not converting?",
+              answer:
+                "Usually you do not need a full redesign. The audit shows which pages and steps are losing the most revenue, and we fix those first. A redesign only makes sense when the foundation itself is holding you back.",
               align: "center",
             },
           ]}
