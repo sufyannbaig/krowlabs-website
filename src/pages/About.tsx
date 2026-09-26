@@ -159,18 +159,16 @@ export default function About() {
         </Container>
       </section>
 
-      <section className="overflow-x-clip py-20 max-lg:py-16">
-        <Container className="flex items-end justify-between gap-6 max-lg:flex-col max-lg:items-start">
+      {/* same treatment as the home page testimonials */}
+      <section className="overflow-x-clip bg-ink pb-20 pt-8 max-lg:pb-16 max-lg:pt-4">
+        <Container>
           <Reveal>
-            <h2 className="text-[52px] font-medium leading-[1.2] tracking-[-2px] text-ink max-lg:text-[34px]">
-              What <span className="accent">clients</span> say
+            <h2 className="w-full text-center text-[60px] font-medium leading-[1.24] tracking-[-2.4px] text-white max-lg:text-[36px] max-lg:tracking-[-1.2px]">
+              What <span className="font-normal text-white/60">clients</span> say
             </h2>
           </Reveal>
-          <Button variant="outline" size="md" href="/work">
-            See our work
-          </Button>
         </Container>
-        <TestimonialTicker items={featuredTestimonials} />
+        <TestimonialTicker items={featuredTestimonials} className="mt-6" />
       </section>
 
       <CtaBanner
