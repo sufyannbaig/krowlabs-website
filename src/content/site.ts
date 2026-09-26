@@ -31,7 +31,7 @@ export const auditFormEndpoint: string | null = null;
  */
 export const analytics = {
   /** Google Analytics 4 measurement ID, e.g. "G-XXXXXXX". */
-  ga4Id: null as string | null,
+  ga4Id: "G-HNYTM5F8NL" as string | null,
   /** Plausible domain, e.g. "krowlabs.com". */
   plausibleDomain: null as string | null,
   /** Microsoft Clarity project ID (free heatmaps + session recordings). */

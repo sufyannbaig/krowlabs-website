@@ -1,7 +1,6 @@
 import { lazy, Suspense, useEffect } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { DesktopScale } from "@/components/layout/DesktopScale";
-import { trackPageView } from "@/lib/analytics";
 import Index from "@/pages/Index";
 
 const CaseStudy = lazy(() => import("@/pages/CaseStudy"));
@@ -17,7 +16,6 @@ const NotFound = lazy(() => import("@/pages/NotFound"));
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
-  useEffect(() => trackPageView(pathname), [pathname]);
   useEffect(() => {
     if (hash) {
       document.querySelector(hash)?.scrollIntoView();

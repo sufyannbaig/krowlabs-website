@@ -53,8 +53,6 @@ export function track(event: string, props: Record<string, string> = {}) {
   w.clarity?.("event", event);
 }
 
-/** Page-view for client-side route changes (GA4 only; Plausible and Clarity track SPA routes themselves). */
-export function trackPageView(path: string) {
-  const w = window as Win;
-  if (analytics.ga4Id) w.gtag?.("event", "page_view", { page_path: path });
-}
+// Page views on client-side route changes are recorded automatically: GA4 through enhanced measurement
+// ("page changes based on browser history events"), Plausible and Clarity natively. Sending our own
+// page_view as well would double-count every page.
