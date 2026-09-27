@@ -21,6 +21,7 @@ import { homeFaq } from "@/content/homeFaq";
 import { featuredTestimonials } from "@/content/testimonials";
 import { staticPages } from "@/content/pages";
 import { useSeo } from "@/lib/seo";
+import { useIsDesktop } from "@/lib/useIsDesktop";
 import { enterToUpperQuarter, useRectProgress } from "@/lib/useRectProgress";
 import { cn, img } from "@/lib/utils";
 
@@ -199,6 +200,8 @@ function Showreel() {
   // Only fetch the video once the visitor scrolls near it.
   const near = useInView(ref, { once: true, margin: "600px 0px" });
   // function transforms keep this on the JS path (see ProcessSteps for why)
+  const desktop = useIsDesktop();
+  const videoSrc = desktop ? showreel.video : (showreel.mobileVideo ?? showreel.video);
   const scale = useTransform(scrollYProgress, (v) => 0.82 + 0.18 * v);
   const radius = useTransform(scrollYProgress, (v) => 32 * (1 - v));
 
@@ -221,7 +224,7 @@ function Showreel() {
           <video
             aria-label="Krow Labs showreel"
             ref={videoRef}
-            src={near ? showreel.video : undefined}
+            src={near && videoSrc ? videoSrc : undefined}
             poster={showreel.poster}
             className="absolute inset-0 size-full object-cover"
             playsInline

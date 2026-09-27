@@ -47,10 +47,12 @@ export const socials: { label: string; url: string | null }[] = [
 ];
 
 /**
- * Showreel: drop the video into /public/video/ and set `video` (e.g. "/video/showreel.mp4").
- * Until then the poster image is shown with the play button.
+ * Showreel: videos live in /public/video/. `video` is the full-quality file for desktop
+ * (2560×1440, ~14 MB); `mobileVideo` is a lighter file for phones, where the player is small.
+ * If `mobileVideo` is null, phones get `video` too. With no `video`, the poster shows with the play button.
  */
 export const showreel = {
   video: "/video/showreel.mp4" as string | null,
+  mobileVideo: "/video/showreel-mobile.mp4" as string | null,
   poster: "/video/showreel-poster.jpg",
 };
