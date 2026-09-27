@@ -9,6 +9,7 @@ const links = [
   { label: "Work", href: "/work" },
   { label: "Services", href: "/#services" },
   { label: "About", href: "/about" },
+  { label: "Insights", href: "/blog" },
 ];
 
 const serviceBlurbs: Record<string, string> = {

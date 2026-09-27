@@ -7,7 +7,7 @@ import { socials } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 const columns = [
-  { title: "Site", width: "w-[118px]", links: [["Services", "/#services"], ["Work", "/work"], ["About", "/about"], ["Free audit", "/free-audit"]] },
+  { title: "Site", width: "w-[118px]", links: [["Services", "/#services"], ["Work", "/work"], ["About", "/about"], ["Insights", "/blog"], ["Free audit", "/free-audit"]] },
   { title: "Careers", links: [["hr@krowlabs.com", "mailto:hr@krowlabs.com"]] },
   {
     title: "Connect",

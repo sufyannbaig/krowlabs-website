@@ -6,6 +6,7 @@
  */
 import { caseStudies } from "./caseStudies";
 import { homeFaq } from "./homeFaq";
+import { posts } from "./posts";
 import { absoluteUrl, staticPages } from "./pages";
 import { services } from "./services";
 import { bookingUrl, siteUrl, socials } from "./site";
@@ -78,10 +79,15 @@ export function llmsTxt() {
     link("Home", "/"),
     link("About", "/about", staticPages["/about"].description),
     link("Work", "/work", staticPages["/work"].description),
+    link("Insights", "/blog", staticPages["/blog"].description),
     "",
     "## Case studies",
     "",
     ...caseStudies.map((c) => link(`${c.client} (${c.industry})`, `/work/${c.slug}`, c.summary)),
+    "",
+    "## Insights (articles)",
+    "",
+    ...posts.map((p) => link(p.title, `/blog/${p.slug}`, p.description)),
     "",
     "## Frequently asked questions",
     "",

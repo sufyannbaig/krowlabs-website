@@ -4,6 +4,7 @@
  * so this file only uses relative imports.
  */
 import { caseStudies } from "./caseStudies";
+import { AUTHOR, posts } from "./posts";
 import { siteUrl } from "./site";
 
 export type PageMeta = { title: string; description: string; image?: string };
@@ -28,6 +29,12 @@ export const staticPages: Record<string, PageMeta> = {
     description:
       "Krow Labs is a conversion-focused design studio led by Sufyan Baig: brand, UI/UX, landing pages, ad creative and development for growing ecommerce and SaaS brands.",
     image: "/og/about.jpg",
+  },
+  "/blog": {
+    title: "Insights: conversion, design and growth",
+    description:
+      "Practical articles from Krow Labs on conversion rate optimization, landing pages, ecommerce, SaaS websites and ad creative, drawn from real client projects.",
+    image: "/og/blog.jpg",
   },
   "/free-audit": {
     title: "Free Conversion Audit",
@@ -77,11 +84,18 @@ export function caseStudyMeta(slug: string): PageMeta | undefined {
   };
 }
 
+export function postMeta(slug: string): PageMeta | undefined {
+  const p = posts.find((x) => x.slug === slug);
+  if (!p) return undefined;
+  return { title: p.title, description: p.description, image: `/og/blog-${slug}.jpg` };
+}
+
 /** Every indexable route with its metadata. */
 export function allPages(): { path: string; meta: PageMeta }[] {
   return [
     ...Object.entries(staticPages).map(([path, meta]) => ({ path, meta })),
     ...caseStudies.map((c) => ({ path: `/work/${c.slug}`, meta: caseStudyMeta(c.slug)! })),
+    ...posts.map((p) => ({ path: `/blog/${p.slug}`, meta: postMeta(p.slug)! })),
   ];
 }
 
@@ -130,6 +144,23 @@ export function structuredData(path: string, meta: PageMeta) {
       dateCreated: study.year,
       creator: { "@type": "Organization", name: SITE_NAME, url: siteUrl },
       about: study.client,
+    });
+  }
+  const postSlug = path.startsWith("/blog/") ? path.slice(6) : null;
+  const post = postSlug ? posts.find((p) => p.slug === postSlug) : null;
+  if (post) {
+    data.push({
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.description,
+      image: metaImage(meta),
+      url: absoluteUrl(path),
+      datePublished: post.date,
+      dateModified: post.date,
+      author: { "@type": "Person", name: AUTHOR.name, jobTitle: "Founder & Creative Director", url: absoluteUrl("/about") },
+      publisher: { "@type": "Organization", name: SITE_NAME, url: siteUrl, logo: absoluteUrl("/icon-512.png") },
+      mainEntityOfPage: absoluteUrl(path),
     });
   }
   return data;

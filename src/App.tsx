@@ -12,6 +12,8 @@ const WebDevelopment = lazy(() => import("@/pages/services/WebDevelopment"));
 const Work = lazy(() => import("@/pages/Work"));
 const About = lazy(() => import("@/pages/About"));
 const FreeAudit = lazy(() => import("@/pages/FreeAudit"));
+const Blog = lazy(() => import("@/pages/Blog"));
+const Post = lazy(() => import("@/pages/Post"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
 
 function ScrollToTop() {
@@ -39,6 +41,8 @@ export function AppRoutes() {
         <Route path="/about" element={<About />} />
         <Route path="/free-audit" element={<FreeAudit />} />
         <Route path="/work/:slug" element={<CaseStudy />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<Post />} />
         <Route path="/services/cro" element={<Cro />} />
         <Route path="/services/web-development" element={<WebDevelopment />} />
         <Route path="/services/ui-ux-design" element={<UiUxDesign />} />
