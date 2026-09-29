@@ -33,6 +33,101 @@ export const AUTHOR = { name: "Sufyan Baig", role: "Founder & Creative Director,
 
 export const posts: Post[] = [
   {
+    slug: "landing-page-cost",
+    title: "How much does a landing page cost? What you are actually paying for",
+    description:
+      "A landing page costs a few hundred to a few thousand dollars. Here is what actually drives the price, and how to tell if a quote is worth it for the traffic you already pay for.",
+    date: "2026-09-29",
+    service: "web-development",
+    cover: "/work/optiwrite/cover.webp",
+    related: ["optiwrite", "b2b-saas-website"],
+    body: [
+      {
+        type: "p",
+        text: "A professionally designed and built landing page usually costs somewhere between a few hundred and a few thousand dollars. At Krow Labs, projects run from **$449 to $2,499**, depending on how much strategy, copy and build work the page needs. The price matters less than one number most quotes never mention: how many extra customers the page has to bring in to pay for itself.",
+      },
+      { type: "h2", text: "What decides the price of a landing page?" },
+      {
+        type: "p",
+        text: "The price follows the amount of thinking, not the number of pixels. Two pages can look equally polished and cost very different amounts because one was designed around an offer that had been worked out properly, and the other was not.",
+      },
+      { type: "p", text: "These are the things that actually move a quote:" },
+      {
+        type: "list",
+        items: [
+          "**Strategy and audit.** Is someone looking at your current page, your traffic source and your analytics before designing? This is the part that decides whether the page converts, and it is the first thing cheap quotes leave out.",
+          "**Copy.** Writing the headline, the offer and the objection handling is often the hardest part of the job. Check whether the quote includes it or expects you to supply it.",
+          "**Number of sections.** A short page for a single campaign is a different job from a long sales page with proof, FAQ and comparisons.",
+          "**Build platform.** Framer, Webflow, Shopify or your existing stack. Building inside a platform your team can edit adds a little work upfront and saves a developer later.",
+          "**Integrations and tracking.** Forms, your CRM, checkout, analytics and conversion events. A page that nobody can measure cannot be improved.",
+          "**Revisions and mobile.** How many rounds are included, and whether mobile is designed properly or just shrunk down.",
+        ],
+      },
+      { type: "h2", text: "Why is the cheapest landing page often the most expensive?" },
+      {
+        type: "p",
+        text: "Because the page is not where you spend most of your money. The traffic is. If you pay for ads and send that traffic to a page that converts poorly, you keep paying for clicks that never buy, every day the page is live.",
+      },
+      {
+        type: "p",
+        text: "A cheap page that nobody planned usually comes with the same problems: a headline that describes the company instead of the offer, three competing buttons, proof hidden at the bottom, a form that asks too much. None of these are expensive to fix at the design stage. All of them are expensive to leave in place once the ads are running.",
+      },
+      { type: "h2", text: "How do you know if a landing page is worth the price?" },
+      {
+        type: "p",
+        text: "Divide the price of the page by what one new customer is worth to you. That tells you how many extra customers the page needs to bring in to pay for itself.",
+      },
+      { type: "p", text: "Here is a simple way to run the numbers for your own page:" },
+      {
+        type: "list",
+        ordered: true,
+        items: [
+          "Take your monthly visitors to the page and your current conversion rate.",
+          "Estimate the value of one conversion (average order value, or the value of a qualified lead).",
+          "Work out how many extra conversions per month the new page needs to cover its cost within your payback window.",
+        ],
+      },
+      {
+        type: "p",
+        text: "As an illustration: if a page costs $1,500 and one customer is worth $150, the new page needs 10 extra customers in total to break even. With 3,000 visitors a month, that is a conversion lift of about a third of a percentage point over one month. Small improvements to a page that already gets traffic pay back quickly. That is why we look at the page you already have before quoting a new one.",
+      },
+      {
+        type: "p",
+        text: "On one project, a low-converting landing page went from a **6% to a 22%** conversion rate after a redesign, with the same traffic. Not every page will move that far, but it shows where the money is: in what the page does, not what it costs.",
+      },
+      { type: "h2", text: "What should you prepare before asking for quotes?" },
+      { type: "p", text: "The clearer your brief, the more accurate and comparable the quotes will be." },
+      {
+        type: "list",
+        items: [
+          "**Where the traffic comes from.** Paid social, Google Ads, email or organic. The page should continue the story the ad started.",
+          "**The one action you want.** Book a demo, start a trial, buy, request a quote. One page, one primary goal.",
+          "**Your current numbers**, if you have them: visitors, conversion rate, cost per click.",
+          "**The offer and the proof.** Reviews, results, logos, guarantees. We write the words, but the facts have to come from you.",
+          "**Who will edit the page later**, which decides the platform.",
+        ],
+      },
+      {
+        type: "callout",
+        title: "Where to start",
+        text: "If you already have a landing page and traffic, get it audited before you pay for a new one. A few targeted fixes are often worth more than a redesign. Our [free conversion audit](/free-audit) lists the biggest leaks on your key page, ranked by impact, by email.",
+      },
+      { type: "h2", text: "What does a landing page cost at Krow Labs?" },
+      {
+        type: "p",
+        text: "Our landing page projects are **$449 to $2,499**, scoped on a free strategy call before anything is billed. Where a project lands in that range depends on the same drivers listed above: how much audit and copy work the page needs, how many sections it has, the platform and the integrations. You get a fixed scope and price before any work starts, so there are no surprises halfway through.",
+      },
+      {
+        type: "p",
+        text: "Projects usually start within a week of approving the scope. We design in Figma and build in Framer, Webflow or Shopify, so your team can edit the page after hand-off. You can see how this looked for [OptiWrite](/work/optiwrite), an AI content tool, and for a [B2B SaaS website](/work/b2b-saas-website) we designed and built in Framer.",
+      },
+      {
+        type: "p",
+        text: "If you are comparing quotes, ask each provider the same question: what will you do to make sure this page converts, not just looks good? If you want to talk it through, [book a free strategy call](https://cal.com/krowlabs/discovery) or see our [website development](/services/web-development) work.",
+      },
+    ],
+  },
+  {
     slug: "shopify-store-traffic-but-no-sales",
     title: "Your Shopify store gets traffic but no sales. Here are the 5 fixes we start with.",
     description:
